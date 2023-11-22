@@ -3,12 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.activities.onboarding.screens.OnBoardingFirstFragment">
+    android:layout_height="match_parent">
 
 
     <ImageView
-        android:id="@+id/imgFirstBoard"
+        android:id="@+id/viewpagerObIv"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
@@ -34,46 +33,14 @@
         app:layout_constraintGuide_percent="0.92" />
 
     <TextView
-        android:id="@+id/txtFirstOnBoard"
+        android:id="@+id/viewpagerObTv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/firstOnBoarding"
         android:textSize="40sp"
-
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@id/rightGuideline"
         app:layout_constraintStart_toStartOf="@+id/leftGuideline"
-        app:layout_constraintTop_toBottomOf="@+id/imgFirstBoard" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnSkip"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/btn_skip"
-        android:text="@string/btnSkip"
-        android:textAllCaps="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnNext"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
-        app:layout_constraintTop_toBottomOf="@+id/txtFirstOnBoard" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnNext"
-        android:layout_width="0dp"
-        android:textColor="@color/white"
-        android:textAllCaps="false"
-        android:background="@drawable/btn_next"
-        android:layout_height="wrap_content"
-        android:text="@string/btnNext"
-        android:drawableEnd="@drawable/next_icon"
-        android:layout_marginLeft="10dp"
-        android:drawablePadding="15dp"
-        app:layout_constraintBottom_toBottomOf="@+id/btnSkip"
-        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btnSkip"
-        app:layout_constraintTop_toTopOf="@+id/btnSkip" />
+        app:layout_constraintTop_toBottomOf="@+id/viewpagerObIv" />
 </androidx.constraintlayout.widget.ConstraintLayout>

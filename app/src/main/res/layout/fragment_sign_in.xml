@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/txtSignIn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/txtSignIn"
+        android:textColor="@color/txtBlue"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/arrowBack" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/leftGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.06" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/rightGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.94" />
+
+    <ImageView
+        android:id="@+id/arrowBack"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/baseline_arrow_back_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/topGuideline" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/topGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.07" />
+
+    <TextView
+        android:id="@+id/txtDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/txtSignIn_description"
+        android:textColor="@color/txtGray"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/txtSignIn"
+        app:layout_constraintTop_toBottomOf="@+id/txtSignIn" />
+
+    <TextView
+        android:id="@+id/txtFirstName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtFirstName"
+        android:textColor="@color/txtGray"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/txtDescription"
+        app:layout_constraintVertical_bias="0.1" />
+
+    <EditText
+        android:id="@+id/edtFirstName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/edt_registration"
+        android:ems="10"
+        android:hint="@string/txtEnterFirstName"
+        android:inputType="text"
+        android:padding="10dp"
+        android:textColorHint="@color/txtBlue"
+        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/txtFirstName" />
+
+    <TextView
+        android:id="@+id/txtLastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtSecondName"
+        android:textColor="@color/txtGray"
+        android:textSize="15sp"
+
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/edtFirstName"
+        app:layout_constraintVertical_bias="0.1" />
+
+    <EditText
+        android:id="@+id/edtLastName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/edt_registration"
+        android:ems="10"
+        android:hint="@string/txtEnterSecondName"
+        android:inputType="text"
+        android:padding="10dp"
+        android:textColorHint="@color/txtBlue"
+        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/txtLastName" />
+
+
+    <TextView
+        android:id="@+id/txtEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtEmail"
+        android:textColor="@color/txtGray"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@id/edtLastName"
+        app:layout_constraintVertical_bias="0.1" />
+
+    <EditText
+        android:id="@+id/edtEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/edt_registration"
+        android:ems="10"
+        android:hint="@string/txtEnterEmail"
+        android:inputType="textEmailAddress"
+        android:padding="10dp"
+        android:textColorHint="@color/txtBlue"
+        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/txtEmail" />
+
+    <TextView
+        android:id="@+id/txtPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="@string/txtPassword"
+        android:textColor="@color/txtGray"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@id/edtEmail" />
+
+    <EditText
+        android:id="@+id/edtPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/edt_registration"
+        android:hint="@string/txtEnterPassword"
+        android:inputType="textPassword"
+        android:padding="10dp"
+        android:textColorHint="@color/txtBlue"
+        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSingIn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/btn_next"
+        android:text="@string/txtSignIn"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/edtPassword" />
+
+    <TextView
+        android:id="@+id/txtOr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/txtOrSignIn"
+        android:textColor="@color/txtGray"
+        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/btnSingIn" />
+
+    <ImageButton
+        android:id="@+id/googleSignIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:padding="25dp"
+        android:src="@drawable/google_svgrepo_com"
+        app:layout_constraintEnd_toStartOf="@+id/facebookSignIn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/txtOr" />
+
+    <ImageButton
+        android:id="@+id/facebookSignIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="25dp"
+        android:src="@drawable/facebook_svgrepo_com"
+        app:layout_constraintBottom_toBottomOf="@+id/googleSignIn"
+        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/googleSignIn"
+        app:layout_constraintTop_toTopOf="@+id/googleSignIn" />
+
+    <TextView
+        android:id="@+id/txtAlready"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/txtDontHave"
+        android:textColor="@color/txtGray"
+        app:layout_constraintEnd_toStartOf="@+id/txtSignUp"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/googleSignIn" />
+
+    <TextView
+        android:id="@+id/txtSignUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:text="@string/txtSingUp"
+        android:textColor="@color/btn_blue"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/txtAlready"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/txtAlready"
+        app:layout_constraintTop_toTopOf="@+id/txtAlready" />
+</androidx.constraintlayout.widget.ConstraintLayout>

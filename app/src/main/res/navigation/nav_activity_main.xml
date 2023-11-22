@@ -9,7 +9,7 @@
         android:id="@+id/viewPagerFragment"
         android:name="com.example.flightapp.ui.activities.onboarding.ViewPagerFragment"
         android:label="fragment_view_pager"
-        tools:layout="@layout/fragment_view_pager" >
+        tools:layout="@layout/fragment_view_pager">
         <action
             android:id="@+id/toSignInFragment"
             app:destination="@id/signInFragment"
@@ -18,7 +18,16 @@
     </fragment>
     <fragment
         android:id="@+id/signInFragment"
-        android:name="com.example.flightapp.ui.activities.SignInFragment"
+        android:name="com.example.flightapp.ui.activities.signInFragment.SignInFragment"
         android:label="fragment_sign_in"
+        tools:layout="@layout/fragment_sign_in">
+        <action
+            android:id="@+id/toSignUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.example.flightapp.ui.activities.signInFragment.SignUpFragment"
+        android:label="SignUpFragment"
         tools:layout="@layout/fragment_sign_in" />
 </navigation>
