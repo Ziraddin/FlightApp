@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">FlightApp</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="firstOnBoarding">Explore The Beautiful World!</string>
+    <string name="secondOnBoarding">Find Your Perfect Tickets To Fly</string>
+    <string name="thirdOnBoarding">Book Appointment in Easiest Way!</string>
+    <string name="btnSkip">Skip</string>
+    <string name="btnNext">Next</string>
+    <string name="btnGetStarted">Get Started</string>
+    <string name="txtSignIn">Sign In</string>
+    <string name="txtSignIn_description">Start Your Journey with affordable price</string>
+    <string name="txtEmail">Email</string>
+    <string name="txtEnterEmail">Enter Your Email</string>
+    <string name="txtPassword">Password</string>
+    <string name="txtEnterPassword">Enter Your Password</string>
+    <string name="btnSignIn">Sign in</string>
+    <string name="txtOrSignIn">Or Sign In With</string>
+    <string name="txtDontHave">Don’t Have an Account?</string>
+    <string name="txtSingUp">Sign Up</string>
+    <string name="txtFirstName">First Name</string>
+    <string name="txtSecondName">Last Name</string>
+    <string name="txtEnterFirstName">Enter your first name</string>
+    <string name="txtEnterSecondName">Enter your last name</string>
+    <string name="txtAlready">Already have an account?</string>
+    <string name="txtOrSignUp">Or Sign Up With</string>
+    <string name="btnSignUp">Sign up</string>
 </resources>
