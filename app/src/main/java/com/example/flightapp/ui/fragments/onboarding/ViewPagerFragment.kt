@@ -1,4 +1,4 @@
-package com.example.flightapp.ui.activities.onboarding
+package com.example.flightapp.ui.fragments.onboarding
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,30 +6,29 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
-import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
 import com.example.flightapp.R
 import com.example.flightapp.databinding.FragmentViewPagerBinding
-import com.example.flightapp.ui.activities.onboarding.screens.onboardingVpDto
+import com.example.flightapp.ui.adapters.viewpager.OnBoarding
 
 
 class ViewPagerFragment : Fragment() {
     private lateinit var binding: FragmentViewPagerBinding
     lateinit var viewPager: ViewPager2
-    lateinit var data : List<onboardingVpDto>
+    lateinit var data : List<ViewPagerDto>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentViewPagerBinding.inflate(inflater)
-         data = listOf<onboardingVpDto>(
-            onboardingVpDto(R.drawable.onboardingfirst, resources.getString(R.string.firstOnBoarding)),
-            onboardingVpDto(
+         data = listOf<ViewPagerDto>(
+             ViewPagerDto(R.drawable.onboardingfirst, resources.getString(R.string.firstOnBoarding)),
+             ViewPagerDto(
                 R.drawable.onboardingsecond,
                 resources.getString(R.string.secondOnBoarding)
             ),
-            onboardingVpDto(R.drawable.onboardingthird, resources.getString(R.string.thirdOnBoarding))
+             ViewPagerDto(R.drawable.onboardingthird, resources.getString(R.string.thirdOnBoarding))
         )
         viewPager = binding.viewPager
         viewPager.isUserInputEnabled = false
@@ -38,8 +37,8 @@ class ViewPagerFragment : Fragment() {
         return binding.root
     }
 
-    private fun setAdapter(data: List<onboardingVpDto>) {
-        val adapter = ViewPagerAdapter(data)
+    private fun setAdapter(data: List<ViewPagerDto>) {
+        val adapter = OnBoarding(data)
         val dotsIndicator = binding.dotsIndicator
         viewPager.adapter = adapter
         dotsIndicator.attachTo(viewPager)

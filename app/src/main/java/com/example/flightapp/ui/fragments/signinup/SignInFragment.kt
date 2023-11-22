@@ -1,4 +1,4 @@
-package com.example.flightapp.ui.activities.signInFragment
+package com.example.flightapp.ui.fragments.signinup
 
 import android.os.Bundle
 import android.view.LayoutInflater

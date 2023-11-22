@@ -1,14 +1,13 @@
-package com.example.flightapp.ui.activities.onboarding
+package com.example.flightapp.ui.adapters.viewpager
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.flightapp.R
 import com.example.flightapp.databinding.FragmentOnBoardingFirstBinding
-import com.example.flightapp.ui.activities.onboarding.screens.onboardingVpDto
+import com.example.flightapp.ui.fragments.onboarding.onboardingVpDto
 
-class ViewPagerAdapter(private val data: List<onboardingVpDto>) :
-    RecyclerView.Adapter<ViewPagerAdapter.ViewHolder>() {
+class OnBoarding(private val data: List<onboardingVpDto>) :
+    RecyclerView.Adapter<OnBoarding.ViewHolder>() {
 
     inner class ViewHolder(view: FragmentOnBoardingFirstBinding) : RecyclerView.ViewHolder(view.root) {
         val image = view.viewpagerObIv
