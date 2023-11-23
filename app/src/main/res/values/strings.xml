@@ -24,5 +24,15 @@
     <string name="txtAlready">Already have an account?</string>
     <string name="txtOrSignUp">Or Sign Up With</string>
     <string name="btnSignUp">Sign up</string>
+    <string name="txt_search">Search Flights</string>
+    <string name="txt_header_home">Discover a new world</string>
+    <string name="radio_one_way">One-way</string>
+    <string name="radio_round_trip">Round-trip</string>
+    <string name="txtFrom">From</string>
+    <string name="txtTo">To</string>
+    <string name="txtDepartureDate">Departure Date</string>
+    <string name="txtTravelers">Travelers</string>
+    <string name="btnSearchFlights">Search flights</string>
     <string name="default_web_client_id">1062956195834-f33vid6iho1m46513p1f4ftg9kgpjohm.apps.googleusercontent.com</string>
+
 </resources>

@@ -1,14 +1,225 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/btn_blue"
     tools:context=".ui.fragments.home.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/leftGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.06" />
 
-</FrameLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/rightGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.94" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/topGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.06" />
+
+    <ImageView
+        android:id="@+id/arrowBack"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/baseline_keyboard_arrow_left_24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/topGuideline" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.7"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="@+id/leftGuidelineCard"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <RadioButton
+                    android:id="@+id/radioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/radio_one_way" />
+
+                <RadioButton
+                    android:id="@+id/radioButton2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="15dp"
+                    android:text="@string/radio_round_trip" />
+            </RadioGroup>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/leftGuidelineCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.06" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/rightGuidelineCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.94" />
+
+            <TextView
+                android:id="@+id/txtFrom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/txtFrom"
+                android:textColor="@color/txtDarkBlue"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@+id/leftGuidelineCard"
+                app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+            <EditText
+                android:id="@+id/edtFrom"
+                android:background="@drawable/edt_home"
+                android:padding="10dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                app:layout_constraintEnd_toStartOf="@+id/rightGuidelineCard"
+                app:layout_constraintStart_toStartOf="@+id/leftGuidelineCard"
+                app:layout_constraintTop_toBottomOf="@+id/txtFrom" />
+
+            <TextView
+                android:id="@+id/txtTo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/txtTo"
+                android:textColor="@color/txtDarkBlue"
+                android:textSize="15sp"
+
+                app:layout_constraintStart_toStartOf="@+id/leftGuidelineCard"
+                app:layout_constraintTop_toBottomOf="@+id/edtFrom" />
+
+            <EditText
+                android:id="@+id/edtTo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:background="@drawable/edt_home"
+                android:padding="10dp"
+                app:layout_constraintEnd_toStartOf="@+id/rightGuidelineCard"
+                app:layout_constraintStart_toStartOf="@+id/leftGuidelineCard"
+                app:layout_constraintTop_toBottomOf="@+id/txtTo" />
+            <TextView
+                android:id="@+id/txtDeparture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/txtDepartureDate"
+                android:textColor="@color/txtDarkBlue"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@+id/leftGuidelineCard"
+                app:layout_constraintTop_toBottomOf="@+id/edtTo" />
+
+            <EditText
+                android:id="@+id/edtDeparture"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:background="@drawable/edt_home"
+                android:padding="10dp"
+
+                app:layout_constraintEnd_toStartOf="@+id/rightGuidelineCard"
+                app:layout_constraintStart_toStartOf="@+id/leftGuidelineCard"
+                app:layout_constraintTop_toBottomOf="@+id/txtDeparture" />
+
+            <TextView
+                android:id="@+id/txtTravelers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/txtTravelers"
+                android:textColor="@color/txtDarkBlue"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@+id/leftGuidelineCard"
+                app:layout_constraintTop_toBottomOf="@+id/edtDeparture" />
+
+            <EditText
+                android:id="@+id/edtTravelers"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:background="@drawable/edt_home"
+                android:padding="10dp"
+                app:layout_constraintEnd_toStartOf="@+id/rightGuidelineCard"
+                app:layout_constraintStart_toStartOf="@+id/leftGuidelineCard"
+                app:layout_constraintTop_toBottomOf="@+id/txtTravelers" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSearch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@color/btn_blue"
+                android:text="@string/btnSearchFlights"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toStartOf="@+id/rightGuidelineCard"
+                app:layout_constraintStart_toStartOf="@+id/leftGuidelineCard"
+                app:layout_constraintTop_toBottomOf="@+id/edtTravelers" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/txtHead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_search"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/arrowBack"
+        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+        app:layout_constraintStart_toEndOf="@+id/arrowBack"
+        app:layout_constraintTop_toTopOf="@+id/topGuideline" />
+
+    <TextView
+        android:id="@+id/txtHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_header_home"
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/arrowBack"
+        app:layout_constraintWidth_percent="0.5" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
