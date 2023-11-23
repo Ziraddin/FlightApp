@@ -47,7 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.07" />
+        app:layout_constraintGuide_begin="62dp" />
 
     <TextView
         android:id="@+id/txtDescription"
@@ -167,7 +167,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnSingIn"
+        android:id="@+id/btnSignIn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -187,7 +187,7 @@
         android:textColor="@color/txtGray"
         app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
         app:layout_constraintStart_toStartOf="@+id/leftGuideline"
-        app:layout_constraintTop_toBottomOf="@+id/btnSingIn" />
+        app:layout_constraintTop_toBottomOf="@+id/btnSignIn" />
 
     <ImageButton
         android:id="@+id/googleSignIn"
