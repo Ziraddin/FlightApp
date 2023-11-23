@@ -34,5 +34,8 @@
     <string name="txtTravelers">Travelers</string>
     <string name="btnSearchFlights">Search flights</string>
     <string name="default_web_client_id">1062956195834-f33vid6iho1m46513p1f4ftg9kgpjohm.apps.googleusercontent.com</string>
+    <string name="order_confirmed">Order confirmed</string>
+    <string name="order_confirmed_message">Thank you for your order. You will receive email confirmation shortly.</string>
+    <string name="see_details">See Details</string>
 
 </resources>
