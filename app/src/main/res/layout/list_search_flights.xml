@@ -155,4 +155,15 @@
         app:layout_constraintBottom_toBottomOf="@+id/txtDirectionFrom"
         app:layout_constraintEnd_toStartOf="@+id/txtDirectionTo"
         app:layout_constraintStart_toEndOf="@+id/txtDirectionFrom" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/txtPrice"
+        app:layout_constraintEnd_toStartOf="@+id/txtPrice"
+        app:layout_constraintTop_toTopOf="@+id/txtPrice" />
 </androidx.constraintlayout.widget.ConstraintLayout>
