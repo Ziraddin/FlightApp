@@ -189,7 +189,7 @@
         app:layout_constraintStart_toStartOf="@+id/leftGuideline"
         app:layout_constraintTop_toBottomOf="@+id/btnSignIn" />
 
-    <ImageButton
+    <com.google.android.gms.common.SignInButton
         android:id="@+id/googleSignIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -202,7 +202,7 @@
         app:layout_constraintStart_toStartOf="@+id/leftGuideline"
         app:layout_constraintTop_toBottomOf="@+id/txtOr" />
 
-    <ImageButton
+    <com.facebook.login.widget.LoginButton
         android:id="@+id/facebookSignIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -240,4 +240,5 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/txtAlready"
         app:layout_constraintTop_toTopOf="@+id/txtAlready" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
