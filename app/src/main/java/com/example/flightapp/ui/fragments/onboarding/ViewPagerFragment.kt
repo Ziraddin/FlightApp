@@ -10,25 +10,37 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.flightapp.R
 import com.example.flightapp.databinding.FragmentViewPagerBinding
 import com.example.flightapp.ui.adapters.viewpager.OnBoarding
+import com.google.firebase.auth.FirebaseAuth
 
 
 class ViewPagerFragment : Fragment() {
     private lateinit var binding: FragmentViewPagerBinding
     lateinit var viewPager: ViewPager2
-    lateinit var data : List<ViewPagerDto>
+    lateinit var data: List<ViewPagerDto>
+    private lateinit var mAuth: FirebaseAuth
+
+
+    override fun onStart() {
+        super.onStart()
+        if (mAuth.currentUser != null) {
+            findNavController().navigate(R.id.action_viewPagerFragment_to_homeFragment)
+        }
+    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentViewPagerBinding.inflate(inflater)
-         data = listOf<ViewPagerDto>(
-             ViewPagerDto(R.drawable.onboardingfirst, resources.getString(R.string.firstOnBoarding)),
-             ViewPagerDto(
+        mAuth = FirebaseAuth.getInstance()
+        data = listOf<ViewPagerDto>(
+            ViewPagerDto(R.drawable.onboardingfirst, resources.getString(R.string.firstOnBoarding)),
+            ViewPagerDto(
                 R.drawable.onboardingsecond,
                 resources.getString(R.string.secondOnBoarding)
             ),
-             ViewPagerDto(R.drawable.onboardingthird, resources.getString(R.string.thirdOnBoarding))
+            ViewPagerDto(R.drawable.onboardingthird, resources.getString(R.string.thirdOnBoarding))
         )
         viewPager = binding.viewPager
         viewPager.isUserInputEnabled = false
@@ -44,7 +56,7 @@ class ViewPagerFragment : Fragment() {
         dotsIndicator.attachTo(viewPager)
     }
 
-    private fun setButtonsListeners(){
+    private fun setButtonsListeners() {
         val btn_skip = binding.btnSkip
         val btn_next = binding.btnNext
 
@@ -53,9 +65,9 @@ class ViewPagerFragment : Fragment() {
         }
         btn_next.apply {
             setOnClickListener {
-                if (viewPager.currentItem < (data.size-1)) {
+                if (viewPager.currentItem < (data.size - 1)) {
                     viewPager.currentItem++
-                    if (viewPager.currentItem == 2){
+                    if (viewPager.currentItem == 2) {
                         text = "Continue"
                     }
                 } else {

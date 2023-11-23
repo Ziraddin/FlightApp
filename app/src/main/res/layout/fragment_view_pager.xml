@@ -25,6 +25,7 @@
         app:dotsColor="@color/txtGray"
         app:dotsCornerRadius="8dp"
         app:dotsSize="10dp"
+        app:progressMode="true"
         app:dotsSpacing="3dp"
         app:dotsWidthFactor="6"
         app:layout_constraintBottom_toTopOf="@+id/btnSkip"

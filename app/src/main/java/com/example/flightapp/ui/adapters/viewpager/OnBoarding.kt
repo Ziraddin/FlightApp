@@ -4,9 +4,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.flightapp.databinding.FragmentOnBoardingFirstBinding
-import com.example.flightapp.ui.fragments.onboarding.onboardingVpDto
+import com.example.flightapp.ui.fragments.onboarding.ViewPagerDto
 
-class OnBoarding(private val data: List<onboardingVpDto>) :
+class OnBoarding(private val data: List<ViewPagerDto>) :
     RecyclerView.Adapter<OnBoarding.ViewHolder>() {
 
     inner class ViewHolder(view: FragmentOnBoardingFirstBinding) : RecyclerView.ViewHolder(view.root) {
