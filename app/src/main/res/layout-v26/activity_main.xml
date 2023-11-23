@@ -25,6 +25,7 @@
         app:itemTextColor="@color/bottomnav"
         android:layout_width="0dp"
         android:background="@color/white"
+        android:defaultFocusHighlightEnabled="false"
         android:visibility="gone"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/fragmentContainerView"

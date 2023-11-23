@@ -37,5 +37,7 @@
     <string name="order_confirmed">Order confirmed</string>
     <string name="order_confirmed_message">Thank you for your order. You will receive email confirmation shortly.</string>
     <string name="see_details">See Details</string>
+    <string name="calendar_txt_select">Select Date</string>
+    <string name="calendar_btn_search">Search date</string>
 
 </resources>

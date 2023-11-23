@@ -4,13 +4,17 @@
     <item
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:checkable="false"
+        android:icon="@drawable/homeicon"
         android:title="Home" />
     <item
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:icon="@drawable/transactionicon"
         android:title="Transaction" />
     <item
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:icon="@drawable/accounticon"
         android:title="Account" />
 </menu>
