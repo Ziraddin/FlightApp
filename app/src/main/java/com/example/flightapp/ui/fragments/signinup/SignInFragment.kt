@@ -51,6 +51,7 @@ class SignInFragment : Fragment() {
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken(getString(R.string.default_web_client_id)).requestEmail().build()
         mGoogleSignInClient = GoogleSignIn.getClient(requireContext(), gso)
         setVisibility()
+        signInWithGoogle()
 
         binding.btnSignIn.setOnClickListener {
             val email = binding.edtEmail.text.toString()
@@ -83,7 +84,7 @@ class SignInFragment : Fragment() {
             if (task.isSuccessful) {
                 val user = mAuth.currentUser
                 Toast.makeText(
-                    requireContext(), "Signed in as ${user?.displayName}", Toast.LENGTH_SHORT
+                    requireContext(), "Signed in as ${binding.edtEmail.text}", Toast.LENGTH_SHORT
                 ).show()
                 onSignInSuccess()
             } else {
