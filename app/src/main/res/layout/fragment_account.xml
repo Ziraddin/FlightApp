@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.account.AccountFragment">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/btn_blue"
+        android:backgroundTint="@color/btn_blue"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/rightCardGuideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.95"/>
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/leftCardGuideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintGuide_percent="0.1" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/topGuideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.05" />
+
+            <TextView
+                android:id="@+id/txtHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txtMyProfile"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/topGuideline"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.3" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgProfileAccount"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:src="@drawable/accounticon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/topGuideline"
+                app:layout_constraintTop_toBottomOf="@+id/txtHeader" />
+
+            <TextView
+                android:id="@+id/txtName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:text="Nicat Zeynalli"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/imgProfileAccount"
+                app:layout_constraintTop_toTopOf="@+id/imgProfileAccount" />
+
+            <TextView
+                android:id="@+id/txtEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="nicat@gmail.com"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="@+id/txtName"
+                app:layout_constraintTop_toBottomOf="@+id/txtName" />
+
+            <TextView
+                android:id="@+id/txtNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="+994 50 962 75 08"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="@+id/txtEmail"
+                app:layout_constraintTop_toBottomOf="@+id/txtEmail" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/edit_icon"
+                app:layout_constraintBottom_toBottomOf="@+id/txtName"
+                app:layout_constraintEnd_toStartOf="@+id/rightCardGuideline"
+                app:layout_constraintTop_toTopOf="@+id/txtName" />
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/leftGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+</androidx.constraintlayout.widget.ConstraintLayout>

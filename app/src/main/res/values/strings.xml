@@ -60,6 +60,12 @@
     <string name="txtIdCardNumber">ID card number</string>
     <string name="txtFooterContactPersonDetails">This contact is for e-ticket and refund/rescheduling</string>
     <string name="txtFooterPersonInfo">This contact is for e-ticket and refund/rescheduling</string>
+    <string name="txtAddBaggage">Add Baggage</string>
+    <string name="txtZeroKg">0Kg</string>
+    <string name="txtFiveKg">5Kg</string>
+    <string name="txtTenKg">10Kg</string>
+    <string name="txtTotal">Total</string>
+    <string name="txtMyProfile">My Profile</string>
 
     <string name="calendar_btn_search">Search date</string>
 

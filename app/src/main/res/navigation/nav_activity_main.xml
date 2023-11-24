@@ -48,6 +48,9 @@
         <action
             android:id="@+id/action_homeFragment_to_searchFlights"
             app:destination="@id/searchFlights" />
+        <action
+            android:id="@+id/action_homeFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFlights"
@@ -80,4 +83,9 @@
         android:name="com.example.flightapp.ui.fragments.others.PassengerInfoFragment"
         android:label="PassengerInfoFragment"
         tools:layout="@layout/fragment_contact_details" />
+    <fragment
+        android:id="@+id/accountFragment"
+        android:name="com.example.flightapp.ui.fragments.account.AccountFragment"
+        android:label="fragment_account"
+        tools:layout="@layout/fragment_account" />
 </navigation>
