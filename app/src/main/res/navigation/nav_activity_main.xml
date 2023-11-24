@@ -53,5 +53,31 @@
         android:id="@+id/searchFlights"
         android:name="com.example.flightapp.ui.fragments.home.search.SearchFlights"
         android:label="fragment_search_flights"
-        tools:layout="@layout/fragment_search_flights" />
+        tools:layout="@layout/fragment_search_flights" >
+        <action
+            android:id="@+id/action_searchFlights_to_bookingDetailsFragment"
+            app:destination="@id/bookingDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookingDetailsFragment"
+        android:name="com.example.flightapp.ui.fragments.others.BookingDetailsFragment"
+        android:label="fragment_booking_details"
+        tools:layout="@layout/fragment_booking_details" >
+        <action
+            android:id="@+id/action_bookingDetailsFragment_to_contactDetailsFragment"
+            app:destination="@id/contactDetailsFragment" />
+        <action
+            android:id="@+id/action_bookingDetailsFragment_to_passengerInfoFragment"
+            app:destination="@id/passengerInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/contactDetailsFragment"
+        android:name="com.example.flightapp.ui.fragments.others.ContactDetailsFragment"
+        android:label="fragment_contact_details"
+        tools:layout="@layout/fragment_contact_details" />
+    <fragment
+        android:id="@+id/passengerInfoFragment"
+        android:name="com.example.flightapp.ui.fragments.others.PassengerInfoFragment"
+        android:label="PassengerInfoFragment"
+        tools:layout="@layout/fragment_contact_details" />
 </navigation>

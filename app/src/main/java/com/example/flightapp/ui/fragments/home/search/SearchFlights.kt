@@ -75,7 +75,7 @@ class SearchFlights : Fragment() {
 
             )
 
-        val adapter = FlightTicketAdapter(flightTickets)
+        val adapter = FlightTicketAdapter(flightTickets){findNavController().navigate(R.id.action_searchFlights_to_bookingDetailsFragment)}
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter
     }
@@ -85,6 +85,8 @@ class SearchFlights : Fragment() {
         val activity = requireActivity() as? MainActivity
         activity?.setBottomNavigation(false)
     }
+
+
 
 
 

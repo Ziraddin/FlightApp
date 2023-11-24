@@ -38,6 +38,29 @@
     <string name="order_confirmed_message">Thank you for your order. You will receive email confirmation shortly.</string>
     <string name="see_details">See Details</string>
     <string name="calendar_txt_select">Select Date</string>
+    <string name="txtContactDetails">Contact Details</string>
+    <string name="txtContactDescription">(For E-Ticket/Voucher)</string>
+    <string name="txtEdit">Edit</string>
+    <string name="txtPassengerInfo">Passenger Info</string>
+    <string name="btnSaveChanges">Save Changes</string>
+    <string name="txtFacility">Facility</string>
+    <string name="txtContactBaggage">Baggage</string>
+    <string name="txtAddExtra">Add extra baggage</string>
+    <string name="txtExtraProtection">Extra Protection</string>
+    <string name="txtContactOption">Same As Contact Details</string>
+    <string name="txtSearchSubtotal">Subtotal</string>
+    <string name="txtSelectSeat">Select Seat</string>
+    <string name="radioMale">Male</string>
+    <string name="radioFemale">Female</string>
+
+    <string name="txtContactPersonDetails">Contact Person Details</string>
+    <string name="txtFullName">Full Name</string>
+    <string name="txtEmailAddress">Email Address</string>
+    <string name="txtPhoneNumber">Phone Number</string>
+    <string name="txtIdCardNumber">ID card number</string>
+    <string name="txtFooterContactPersonDetails">This contact is for e-ticket and refund/rescheduling</string>
+    <string name="txtFooterPersonInfo">This contact is for e-ticket and refund/rescheduling</string>
+
     <string name="calendar_btn_search">Search date</string>
 
 </resources>

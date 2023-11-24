@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.flightapp.databinding.ListSearchFlightsBinding
 
-class FlightTicketAdapter(private val flight: MutableList<Flight>) :
+class FlightTicketAdapter(private val flight: MutableList<Flight>,val nav : ()->Unit) :
     RecyclerView.Adapter<FlightTicketAdapter.ViewHolder>() {
 
 
@@ -40,6 +40,9 @@ class FlightTicketAdapter(private val flight: MutableList<Flight>) :
             binding.txtDuration.text = current.duration
             binding.txtCompanyName.text = current.companyName
 
+            itemView.setOnClickListener {
+                nav()
+            }
         }
     }
 
