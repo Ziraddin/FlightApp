@@ -80,8 +80,8 @@ class SearchFlights : Fragment() {
             )
 
         val searchedFlights = flightTickets.filter { flight ->
-            (searchedDestinationFrom.isNullOrBlank() || flight.from == searchedDestinationFrom) &&
-                    (searchedDestinationTo.isNullOrBlank() || flight.to == searchedDestinationTo) &&
+            (searchedDestinationFrom.isNullOrBlank() || flight.from.toLowerCase() == searchedDestinationFrom.toLowerCase()) &&
+                    (searchedDestinationTo.isNullOrBlank() || flight.to.toLowerCase() == searchedDestinationTo.toLowerCase()) &&
                     (searchedDate.isNullOrBlank() || flight.dateFrom == searchedDate)
         }
 
