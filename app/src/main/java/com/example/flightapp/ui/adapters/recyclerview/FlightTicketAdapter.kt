@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.flightapp.databinding.ListSearchFlightsBinding
 
-class FlightTicketAdapter(private val flight: MutableList<Flight>,val nav : ()->Unit) :
+class FlightTicketAdapter(private val flight: List<Flight>,val nav : ()->Unit) :
     RecyclerView.Adapter<FlightTicketAdapter.ViewHolder>() {
 
 

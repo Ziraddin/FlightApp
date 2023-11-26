@@ -15,6 +15,7 @@ import com.example.flightapp.ui.adapters.recyclerview.FlightTicketAdapter
 
 class SearchFlights : Fragment() {
     private lateinit var binding: FragmentSearchFlightsBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -22,19 +23,22 @@ class SearchFlights : Fragment() {
         binding = FragmentSearchFlightsBinding.inflate(inflater)
         setAdapter()
 
-        binding.arrowBack.setOnClickListener{
+        binding.arrowBack.setOnClickListener {
             findNavController().popBackStack()
         }
         return binding.root
     }
 
     private fun setAdapter() {
+        val searchedDestinationFrom: String? = arguments?.getString("destinationFrom")
+        val searchedDestinationTo: String? = arguments?.getString("destinationTo")
+        val searchedDate: String? = arguments?.getString("date")
         val flightTickets = mutableListOf(
             Flight(
                 txt1 = "LGA",
                 txt2 = "DAD",
                 from = "London",
-                to = "Paris",
+                to = "New Jersey",
                 hourTo = "10:00",
                 hourFrom = "12:00",
                 dateFrom = "2023-12-01",
@@ -48,7 +52,7 @@ class SearchFlights : Fragment() {
                 txt1 = "LGA",
                 txt2 = "DAD",
                 from = "London",
-                to = "Paris",
+                to = "Baku",
                 hourTo = "10:00",
                 hourFrom = "12:00",
                 dateFrom = "2023-12-01",
@@ -61,8 +65,8 @@ class SearchFlights : Fragment() {
             Flight(
                 txt1 = "LGA",
                 txt2 = "DAD",
-                from = "London",
-                to = "Paris",
+                from = "Istanbul",
+                to = "Baku",
                 hourTo = "10:00",
                 hourFrom = "12:00",
                 dateFrom = "2023-12-01",
@@ -75,9 +79,31 @@ class SearchFlights : Fragment() {
 
             )
 
-        val adapter = FlightTicketAdapter(flightTickets){findNavController().navigate(R.id.action_searchFlights_to_bookingDetailsFragment)}
+        val searchedFlights = flightTickets.filter { flight ->
+            (searchedDestinationFrom.isNullOrBlank() || flight.from == searchedDestinationFrom) &&
+                    (searchedDestinationTo.isNullOrBlank() || flight.to == searchedDestinationTo) &&
+                    (searchedDate.isNullOrBlank() || flight.dateFrom == searchedDate)
+        }
+
+        if (searchedFlights.isNotEmpty()) {
+            setupRecyclerView(searchedFlights)
+        } else {
+            showNoResultsMessage()
+        }
+
+    }
+
+    private fun setupRecyclerView(searchedFlights: List<Flight>) {
+        val adapter = FlightTicketAdapter(searchedFlights) {
+            findNavController().navigate(R.id.action_searchFlights_to_bookingDetailsFragment)
+        }
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter
+    }
+
+    private fun showNoResultsMessage() {
+        binding.recyclerView.visibility = View.GONE
+        binding.textView7.visibility = View.VISIBLE
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -85,9 +111,6 @@ class SearchFlights : Fragment() {
         val activity = requireActivity() as? MainActivity
         activity?.setBottomNavigation(false)
     }
-
-
-
 
 
 }

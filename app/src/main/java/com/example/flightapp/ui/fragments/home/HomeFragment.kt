@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.CalendarView
 import android.widget.DatePicker
 import android.widget.TextView
+import androidx.core.os.BundleCompat
 import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -28,11 +29,9 @@ class HomeFragment : Fragment() {
     ): View? {
         binding= FragmentHomeBinding.inflate(inflater)
         setDate()
+        btnClickListener()
 
 
-        binding.btnSearch.setOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_searchFlights)
-        }
         return binding.root
     }
 
@@ -62,6 +61,20 @@ class HomeFragment : Fragment() {
                 dialog.hide()
             }
             dialog.show()
+        }
+    }
+
+
+    private fun btnClickListener(){
+        binding.btnSearch.setOnClickListener {
+            val destinationFrom = binding.edtFrom.text.toString()
+            val destinationTo = binding.edtTo.text.toString()
+            val date = binding.edtDeparture.text.toString()
+            val bundle = Bundle()
+            bundle.putString("destinationFrom",destinationFrom)
+            bundle.putString("destinationTo",destinationTo)
+            bundle.putString("date",date)
+            findNavController().navigate(R.id.action_homeFragment_to_searchFlights,bundle)
         }
     }
 

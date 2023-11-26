@@ -95,7 +95,6 @@
             <EditText
                 android:id="@+id/edtFrom"
                 android:background="@drawable/edt_home"
-                android:focusable="false"
                 android:padding="10dp"
                 android:layout_width="0dp"
                 android:drawableStart="@drawable/flight_takeoff_24"
@@ -123,7 +122,6 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:focusable="false"
                 android:drawableStart="@drawable/flight_land_24"
                 android:inputType="text"
                 android:background="@drawable/edt_home"
