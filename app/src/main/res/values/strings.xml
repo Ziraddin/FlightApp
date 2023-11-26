@@ -73,6 +73,12 @@
     <string name="txtEmailAndNumber">Email and Mobile Number</string>
     <string name="txtDeleteAccount">Delete Account</string>
     <string name="txtOther">Other</string>
+    <string name="txtSure">You sure want to delete your account?</string>
+    <string name="txtDeletionAccept">I understand and I accept the deletion of my account</string>
+    <string name="txtTransaction">Transaction</string>
+    <string name="txtGoSomewhere">Let’s go somewhere</string>
+    <string name="txtTransactionDescription">After book a trip you can manage orders and see E-ticket here.</string>
+    <string name="btnBook">Book a trip</string>
 
     <string name="calendar_btn_search">Search date</string>
 

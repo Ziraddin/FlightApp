@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.settings.EmailAndNumberFragment">
+    tools:context=".ui.fragments.settings.DeleteAccountFragment">
 
 
     <ImageView
@@ -29,6 +29,17 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.94" />
 
+    <TextView
+        android:id="@+id/txtDeleteAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/txtDeleteAccount"
+        android:textColor="@color/txtDarkBlue"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/arrowBack" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/leftGuideline"
         android:layout_width="wrap_content"
@@ -36,60 +47,50 @@
         android:orientation="vertical"
         app:layout_constraintGuide_begin="16dp" />
 
-    <TextView
-        android:id="@+id/txtDeleteAccount"
+    <ImageView
+        android:id="@+id/imageView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/txtEmailAndNumber"
-        android:textColor="@color/txtDarkBlue"
-        android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
-        app:layout_constraintTop_toBottomOf="@+id/arrowBack" />
-
-    <TextView
-        android:id="@+id/txtNumber"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="+994509627508"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="@color/txtDarkBlue"
-        app:layout_constraintEnd_toStartOf="@+id/imgEdit"
+        android:src="@drawable/delete_icon_account"
+        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
         app:layout_constraintStart_toStartOf="@+id/leftGuideline"
         app:layout_constraintTop_toBottomOf="@+id/txtDeleteAccount" />
 
-    <ImageView
-        android:id="@+id/imgEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:src="@drawable/edit_blue"
-        app:layout_constraintBottom_toBottomOf="@+id/txtNumber"
-        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
-        app:layout_constraintTop_toTopOf="@+id/txtNumber" />
-
-    <View
-        android:id="@+id/divider4"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="24dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
-        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
-        app:layout_constraintTop_toBottomOf="@+id/txtNumber" />
-
     <TextView
-        android:id="@+id/txtEmail"
-        android:layout_width="wrap_content"
+        android:id="@+id/txtSure"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/txtSure"
+        android:textColor="@color/txtDarkBlue"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/imageView7"
+        app:layout_constraintWidth_percent="0.5" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:text="nicat@gmail.com"
-        android:textColor="@color/txtDarkBlue"
+        android:text="@string/txtDeletionAccept"
+        android:textColor="@color/txtGray"
+        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
         app:layout_constraintStart_toStartOf="@+id/leftGuideline"
-        app:layout_constraintTop_toBottomOf="@+id/divider4" />
+        app:layout_constraintTop_toBottomOf="@+id/txtSure" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnContinue"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_disabled"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:layout_marginTop="16dp"
+        android:text="Yes , Continue"
+        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -59,7 +59,7 @@
                 android:id="@+id/imgProfileAccount"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                android:src="@drawable/accounticon"
+                android:src="@drawable/avatar"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/topGuideline"
                 app:layout_constraintTop_toBottomOf="@+id/txtHeader" />

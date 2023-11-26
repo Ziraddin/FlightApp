@@ -35,5 +35,9 @@ class SettingsFragment : Fragment() {
         binding.imgGoEmail.setOnClickListener {
             findNavController().navigate(R.id.action_settingsFragment_to_emailAndNumberFragment)
         }
+
+        binding.imgGoDelete.setOnClickListener {
+            findNavController().navigate(R.id.action_settingsFragment_to_deleteAccountFragment)
+        }
     }
 }

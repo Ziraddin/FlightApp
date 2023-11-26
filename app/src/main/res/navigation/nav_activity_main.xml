@@ -51,6 +51,9 @@
         <action
             android:id="@+id/action_homeFragment_to_accountFragment"
             app:destination="@id/accountFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_transactionFragment"
+            app:destination="@id/transactionFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchFlights"
@@ -103,6 +106,9 @@
         <action
             android:id="@+id/action_settingsFragment_to_emailAndNumberFragment"
             app:destination="@id/emailAndNumberFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_deleteAccountFragment"
+            app:destination="@id/deleteAccountFragment" />
     </fragment>
     <fragment
         android:id="@+id/languageSettingsFragment"
@@ -115,5 +121,21 @@
         android:label="fragment_email_and_number"
         tools:layout="@layout/fragment_email_and_number" >
 
+    </fragment>
+    <fragment
+        android:id="@+id/deleteAccountFragment"
+        android:name="com.example.flightapp.ui.fragments.settings.DeleteAccountFragment"
+        android:label="fragment_delete_account"
+        tools:layout="@layout/fragment_delete_account" />
+    <fragment
+        android:id="@+id/transactionFragment"
+        android:name="com.example.flightapp.ui.fragments.transaction.TransactionFragment"
+        android:label="fragment_transaction"
+        tools:layout="@layout/fragment_transaction" >
+        <action
+            android:id="@+id/action_transactionFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/transactionFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

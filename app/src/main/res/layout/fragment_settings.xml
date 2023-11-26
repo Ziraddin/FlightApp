@@ -64,10 +64,10 @@
         android:id="@+id/txtLanguage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textColor="@color/txtDarkBlue"
-        android:textSize="18sp"
+        android:layout_marginTop="16dp"
         android:text="@string/txtLanguage"
+        android:textColor="@color/txtDarkBlue"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/leftGuideline"
         app:layout_constraintTop_toBottomOf="@+id/txtGeneral" />
 
@@ -102,14 +102,15 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/leftGuideline"
         app:layout_constraintTop_toBottomOf="@+id/divider" />
+
     <TextView
         android:id="@+id/txtEmailAndNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textSize="18sp"
-        android:textColor="@color/txtDarkBlue"
+        android:layout_marginTop="16dp"
         android:text="@string/txtEmailAndNumber"
+        android:textColor="@color/txtDarkBlue"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/leftGuideline"
         app:layout_constraintTop_toBottomOf="@+id/txtAccount" />
 
@@ -138,7 +139,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/txtDarkBlue"
         android:layout_marginTop="10dp"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:text="@string/txtDeleteAccount"
         app:layout_constraintStart_toStartOf="@+id/leftGuideline"
         app:layout_constraintTop_toBottomOf="@+id/divider2" />

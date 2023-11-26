@@ -19,7 +19,15 @@ class EmailAndNumberFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentEmailAndNumberBinding.inflate(inflater)
+        setDialog()
+        binding.arrowBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
+        return binding.root
+    }
 
+
+    private fun setDialog(){
         binding.imgEdit.setOnClickListener {
             val dialogBinding = DialogEditNumberBinding.inflate(layoutInflater)
             val dialogView = dialogBinding.root
@@ -41,10 +49,5 @@ class EmailAndNumberFragment : Fragment() {
         }
 
 
-        binding.arrowBack.setOnClickListener {
-            findNavController().popBackStack()
-        }
-        return binding.root
     }
-
 }
