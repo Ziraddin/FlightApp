@@ -66,6 +66,13 @@
     <string name="txtTenKg">10Kg</string>
     <string name="txtTotal">Total</string>
     <string name="txtMyProfile">My Profile</string>
+    <string name="txtSettings">Settings</string>
+    <string name="txtLanguage">Language</string>
+    <string name="txtGeneral">General</string>
+    <string name="txtAccountSecurity">Account &amp; Security</string>
+    <string name="txtEmailAndNumber">Email and Mobile Number</string>
+    <string name="txtDeleteAccount">Delete Account</string>
+    <string name="txtOther">Other</string>
 
     <string name="calendar_btn_search">Search date</string>
 

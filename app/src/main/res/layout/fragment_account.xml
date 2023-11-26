@@ -146,7 +146,7 @@
         app:layout_constraintGuide_percent="0.95" />
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/imgGoMyOrder"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:src="@drawable/baseline_keyboard_arrow_right_24"
@@ -185,13 +185,13 @@
         app:layout_constraintTop_toTopOf="@+id/imageView8" />
 
     <ImageView
-        android:id="@+id/imageView9"
+        android:id="@+id/imgGoPaymentMethods"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:src="@drawable/baseline_keyboard_arrow_right_24"
         app:layout_constraintBottom_toBottomOf="@+id/textView8"
         app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
-        app:layout_constraintStart_toStartOf="@+id/imageView7"
+        app:layout_constraintStart_toStartOf="@+id/imgGoMyOrder"
         app:layout_constraintTop_toTopOf="@+id/textView8" />
 
     <com.google.android.material.divider.MaterialDivider
@@ -213,7 +213,7 @@
         app:layout_constraintTop_toBottomOf="@+id/materialDivider2" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/imgInviteFriends"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Invite Friends"
@@ -229,10 +229,10 @@
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:src="@drawable/baseline_keyboard_arrow_right_24"
-        app:layout_constraintBottom_toBottomOf="@+id/textView10"
+        app:layout_constraintBottom_toBottomOf="@+id/imgInviteFriends"
         app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
-        app:layout_constraintStart_toStartOf="@+id/imageView9"
-        app:layout_constraintTop_toTopOf="@+id/textView10" />
+        app:layout_constraintStart_toStartOf="@+id/imgGoPaymentMethods"
+        app:layout_constraintTop_toTopOf="@+id/imgInviteFriends" />
 
     <com.google.android.material.divider.MaterialDivider
         android:id="@+id/materialDivider3"
@@ -241,7 +241,7 @@
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
         app:layout_constraintStart_toStartOf="@+id/leftGuideline"
-        app:layout_constraintTop_toBottomOf="@id/textView10" />
+        app:layout_constraintTop_toBottomOf="@id/imgInviteFriends" />
 
     <ImageView
         android:id="@+id/imageView12"
@@ -261,11 +261,11 @@
         android:textColor="@color/txtDarkBlue"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageView12"
-        app:layout_constraintStart_toStartOf="@+id/textView10"
+        app:layout_constraintStart_toStartOf="@+id/imgInviteFriends"
         app:layout_constraintTop_toTopOf="@+id/imageView12" />
 
     <ImageView
-        android:id="@+id/imageView13"
+        android:id="@+id/imgGoSettings"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:src="@drawable/baseline_keyboard_arrow_right_24"
@@ -305,14 +305,14 @@
         app:layout_constraintTop_toTopOf="@+id/imageView14" />
 
     <ImageView
-        android:id="@+id/imageView15"
+        android:id="@+id/imgGoInfo"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_marginEnd="8dp"
         android:src="@drawable/baseline_keyboard_arrow_right_24"
         app:layout_constraintBottom_toBottomOf="@+id/textView12"
         app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
-        app:layout_constraintStart_toStartOf="@+id/imageView13"
+        app:layout_constraintStart_toStartOf="@+id/imgGoSettings"
         app:layout_constraintTop_toTopOf="@+id/textView12" />
 
     <com.google.android.material.divider.MaterialDivider
@@ -346,13 +346,13 @@
         app:layout_constraintTop_toTopOf="@+id/imageView16" />
 
     <ImageView
-        android:id="@+id/imageView17"
+        android:id="@+id/imgLogOut"
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:src="@drawable/baseline_keyboard_arrow_right_24"
         app:layout_constraintBottom_toBottomOf="@+id/imageView16"
         app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
-        app:layout_constraintStart_toStartOf="@+id/imageView15"
+        app:layout_constraintStart_toStartOf="@+id/imgGoInfo"
         app:layout_constraintTop_toTopOf="@+id/textView13" />
 
 

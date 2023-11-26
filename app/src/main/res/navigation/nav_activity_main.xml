@@ -87,5 +87,33 @@
         android:id="@+id/accountFragment"
         android:name="com.example.flightapp.ui.fragments.account.AccountFragment"
         android:label="fragment_account"
-        tools:layout="@layout/fragment_account" />
+        tools:layout="@layout/fragment_account" >
+        <action
+            android:id="@+id/action_accountFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.flightapp.ui.fragments.settings.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_languageSettingsFragment"
+            app:destination="@id/languageSettingsFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_emailAndNumberFragment"
+            app:destination="@id/emailAndNumberFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/languageSettingsFragment"
+        android:name="com.example.flightapp.ui.fragments.settings.LanguageSettingsFragment"
+        android:label="fragment_language_settings"
+        tools:layout="@layout/fragment_language_settings" />
+    <fragment
+        android:id="@+id/emailAndNumberFragment"
+        android:name="com.example.flightapp.ui.fragments.settings.EmailAndNumberFragment"
+        android:label="fragment_email_and_number"
+        tools:layout="@layout/fragment_email_and_number" >
+
+    </fragment>
 </navigation>

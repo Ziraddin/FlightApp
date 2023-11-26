@@ -5,17 +5,26 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.flightapp.R
+import com.example.flightapp.databinding.FragmentAccountBinding
+import com.example.flightapp.databinding.FragmentHomeBinding
 
 class AccountFragment : Fragment() {
-
+   private lateinit var binding:FragmentAccountBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_account, container, false)
+        binding = FragmentAccountBinding.inflate(inflater)
+        binding.imgGoSettings.setOnClickListener{
+            findNavController().navigate(R.id.settingsFragment)
+        }
+
+        return binding.root
     }
+
+
 
 }

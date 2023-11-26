@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.settings.SettingsFragment">
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/leftGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp" />
+
+    <ImageView
+        android:id="@+id/arrowBack"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+
+        android:src="@drawable/arrow_back_ios_darkblue"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toTopOf="@+id/topGuideline" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/topGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.06" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/rightGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.94" />
+
+    <TextView
+        android:id="@+id/txtSettingsHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:textColor="@color/txtDarkBlue"
+        android:textSize="30sp"
+        android:text="@string/txtSettings"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/arrowBack" />
+
+    <TextView
+        android:id="@+id/txtGeneral"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/txtGeneral"
+        android:textColor="@color/txtDarkBlue"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/txtSettingsHeader" />
+
+    <TextView
+        android:id="@+id/txtLanguage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/txtDarkBlue"
+        android:textSize="18sp"
+        android:text="@string/txtLanguage"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/txtGeneral" />
+
+    <ImageView
+        android:id="@+id/imgGoLanguage"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/baseline_keyboard_arrow_right_24"
+        app:layout_constraintBottom_toBottomOf="@+id/txtLanguage"
+        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/txtGeneral" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/txtLanguage" />
+
+
+    <TextView
+        android:id="@+id/txtAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/txtAccountSecurity"
+        android:textColor="@color/txtDarkBlue"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
+    <TextView
+        android:id="@+id/txtEmailAndNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="18sp"
+        android:textColor="@color/txtDarkBlue"
+        android:text="@string/txtEmailAndNumber"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/txtAccount" />
+
+    <ImageView
+        android:id="@+id/imgGoEmail"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/baseline_keyboard_arrow_right_24"
+        app:layout_constraintBottom_toBottomOf="@+id/txtEmailAndNumber"
+        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+        app:layout_constraintTop_toTopOf="@+id/txtEmailAndNumber" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/txtEmailAndNumber" />
+
+    <TextView
+        android:id="@+id/txtDeleteAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/txtDarkBlue"
+        android:layout_marginTop="10dp"
+        android:textSize="18sp"
+        android:text="@string/txtDeleteAccount"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/divider2" />
+
+    <ImageView
+        android:id="@+id/imgGoDelete"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/baseline_keyboard_arrow_right_24"
+        app:layout_constraintBottom_toBottomOf="@+id/txtDeleteAccount"
+        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+        app:layout_constraintTop_toTopOf="@+id/txtDeleteAccount" />
+
+    <View
+        android:id="@+id/divider3"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/txtDeleteAccount" />
+
+
+    <TextView
+        android:id="@+id/txtOther"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/txtOther"
+        android:textColor="@color/txtDarkBlue"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/divider3" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="App version"
+        android:textColor="@color/txtDarkBlue"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/txtOther" />
+
+    <TextView
+        android:id="@+id/appVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="v1.0"
+        android:textColor="@color/txtDarkBlue"
+        app:layout_constraintBottom_toBottomOf="@+id/textView17"
+        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+        app:layout_constraintTop_toTopOf="@+id/textView17" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
