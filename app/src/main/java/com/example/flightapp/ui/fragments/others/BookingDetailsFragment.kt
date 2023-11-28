@@ -22,6 +22,15 @@ class BookingDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentBookingDetailsBinding.inflate(inflater)
+
+        setBaggageBottomSheet()
+        setNavigation()
+
+        return binding.root
+    }
+
+
+    private fun setNavigation(){
         binding.txtEdit.setOnClickListener {
             findNavController().navigate(R.id.action_bookingDetailsFragment_to_contactDetailsFragment)
         }
@@ -33,13 +42,12 @@ class BookingDetailsFragment : Fragment() {
             findNavController().navigate(R.id.action_bookingDetailsFragment_to_passengerInfoFragment)
         }
 
+        binding.btnSelect.setOnClickListener {
+            findNavController().navigate(R.id.action_bookingDetailsFragment_to_selectSeatFragment)
+        }
 
-        setBaggageBottomSheet()
 
-
-        return binding.root
     }
-
 
     private fun setBaggageBottomSheet() {
         binding.btnAddBaggage.setOnClickListener {

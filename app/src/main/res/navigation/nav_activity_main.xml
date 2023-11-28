@@ -75,6 +75,9 @@
         <action
             android:id="@+id/action_bookingDetailsFragment_to_passengerInfoFragment"
             app:destination="@id/passengerInfoFragment" />
+        <action
+            android:id="@+id/action_bookingDetailsFragment_to_selectSeatFragment"
+            app:destination="@id/selectSeatFragment" />
     </fragment>
     <fragment
         android:id="@+id/contactDetailsFragment"
@@ -138,4 +141,9 @@
             app:popUpTo="@id/transactionFragment"
             app:popUpToInclusive="true" />
     </fragment>
+    <fragment
+        android:id="@+id/selectSeatFragment"
+        android:name="com.example.flightapp.ui.fragments.SelectSeatFragment"
+        android:label="fragment_select_seat"
+        tools:layout="@layout/fragment_select_seat" />
 </navigation>
