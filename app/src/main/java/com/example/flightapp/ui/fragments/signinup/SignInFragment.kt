@@ -113,6 +113,7 @@ class SignInFragment : Fragment() {
         binding.txtLastName.visibility = View.GONE
         binding.edtFirstName.visibility = View.GONE
         binding.edtLastName.visibility = View.GONE
+        binding.arrowBack.visibility = View.INVISIBLE
     }
 
     private fun signInWithEmail(email: String, password: String) {
@@ -183,5 +184,6 @@ class SignInFragment : Fragment() {
             }
         }
     }
+
 
 }
