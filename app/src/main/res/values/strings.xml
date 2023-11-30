@@ -80,6 +80,7 @@
     <string name="txtGoSomewhere">Let’s go somewhere</string>
     <string name="txtTransactionDescription">After book a trip you can manage orders and see E-ticket here.</string>
     <string name="btnBook">Book a trip</string>
+    <string name="txtReturnDate">Return Date</string>
 
     <string name="calendar_btn_search">Search date</string>
 

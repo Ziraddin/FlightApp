@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.CalendarView
 import android.widget.DatePicker
+import android.widget.EditText
 import android.widget.TextView
 import androidx.core.os.BundleCompat
 import androidx.core.view.children
@@ -22,15 +23,15 @@ import kotlinx.coroutines.InternalCoroutinesApi
 import kotlinx.coroutines.NonDisposableHandle.parent
 
 class HomeFragment : Fragment() {
-    private lateinit var binding:FragmentHomeBinding
+    private lateinit var binding: FragmentHomeBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding= FragmentHomeBinding.inflate(inflater)
-        setDate()
+        binding = FragmentHomeBinding.inflate(inflater)
+        setDateListener()
         btnClickListener()
-
+        setLayout()
 
         return binding.root
     }
@@ -42,39 +43,64 @@ class HomeFragment : Fragment() {
     }
 
 
-    private fun setDate() {
+    private fun setDateListener() {
         binding.edtDeparture.setOnClickListener {
-            val dialog = BottomSheetDialog(requireContext())
-            val view = layoutInflater.inflate(R.layout.bottom_sheet_calendar, null)
-            dialog.setCancelable(true)
-            dialog.setContentView(view)
-            val calendarView = view.findViewById<CalendarView>(R.id.calendarView)
-            val btnSelect = view.findViewById<Button>(R.id.btnSelect)
-            var selectedDate = ""
-            calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
-                selectedDate = "$dayOfMonth/${month + 1}/$year"
-                view.findViewById<TextView>(R.id.txtDate).text = selectedDate
+            setDate(binding.edtDeparture)
+        }
 
-            }
-            btnSelect.setOnClickListener{
-                binding.edtDeparture.setText(selectedDate)
-                dialog.hide()
-            }
-            dialog.show()
+        binding.edtReturn.setOnClickListener {
+            setDate(binding.edtReturn)
         }
     }
 
+    private fun setDate(editText: EditText) {
+        val dialog = BottomSheetDialog(requireContext())
+        val view = layoutInflater.inflate(R.layout.bottom_sheet_calendar, null)
+        dialog.setCancelable(true)
+        dialog.setContentView(view)
+        val calendarView = view.findViewById<CalendarView>(R.id.calendarView)
+        val btnSelect = view.findViewById<Button>(R.id.btnSelect)
+        var selectedDate = ""
+        calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
+            selectedDate = "$dayOfMonth/${month + 1}/$year"
+            view.findViewById<TextView>(R.id.txtDate).text = selectedDate
 
-    private fun btnClickListener(){
+        }
+        btnSelect.setOnClickListener {
+            editText.setText(selectedDate)
+            dialog.hide()
+        }
+        dialog.show()
+    }
+
+
+    private fun btnClickListener() {
         binding.btnSearch.setOnClickListener {
             val destinationFrom = binding.edtFrom.text.toString()
             val destinationTo = binding.edtTo.text.toString()
             val date = binding.edtDeparture.text.toString()
             val bundle = Bundle()
-            bundle.putString("destinationFrom",destinationFrom)
-            bundle.putString("destinationTo",destinationTo)
-            bundle.putString("date",date)
-            findNavController().navigate(R.id.action_homeFragment_to_searchFlights,bundle)
+            bundle.putString("destinationFrom", destinationFrom)
+            bundle.putString("destinationTo", destinationTo)
+            bundle.putString("date", date)
+            findNavController().navigate(R.id.action_homeFragment_to_searchFlights, bundle)
+        }
+    }
+
+
+    private fun setLayout() {
+        binding.radioGroup.setOnCheckedChangeListener { group, checkedId ->
+            when (checkedId) {
+                R.id.radioBtnOneWay -> {
+                    binding.edtReturn.visibility = View.GONE
+                    binding.txtReturn.visibility = View.GONE
+                }
+
+                R.id.radioBtnRound -> {
+                    binding.edtReturn.visibility = View.VISIBLE
+                    binding.txtReturn.visibility = View.VISIBLE
+                }
+            }
         }
     }
 
