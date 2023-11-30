@@ -1,10 +1,10 @@
 package com.example.flightapp.ui.fragments.home.search
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.flightapp.R
@@ -12,14 +12,21 @@ import com.example.flightapp.databinding.FragmentSearchFlightsBinding
 import com.example.flightapp.ui.activities.MainActivity
 import com.example.flightapp.ui.adapters.recyclerview.Flight
 import com.example.flightapp.ui.adapters.recyclerview.FlightTicketAdapter
+import java.util.Locale
 
 class SearchFlights : Fragment() {
     private lateinit var binding: FragmentSearchFlightsBinding
 
+    override fun onStart() {
+        super.onStart()
+        val activity = requireActivity() as? MainActivity
+        activity?.setBottomNavigation(false)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentSearchFlightsBinding.inflate(inflater)
         setAdapter()
 
@@ -80,8 +87,8 @@ class SearchFlights : Fragment() {
             )
 
         val searchedFlights = flightTickets.filter { flight ->
-            (searchedDestinationFrom.isNullOrBlank() || flight.from.toLowerCase() == searchedDestinationFrom.toLowerCase()) &&
-                    (searchedDestinationTo.isNullOrBlank() || flight.to.toLowerCase() == searchedDestinationTo.toLowerCase()) &&
+            (searchedDestinationFrom.isNullOrBlank() || flight.from.lowercase(Locale.getDefault()) == searchedDestinationFrom.toLowerCase()) &&
+                    (searchedDestinationTo.isNullOrBlank() || flight.to.lowercase(Locale.getDefault()) == searchedDestinationTo.toLowerCase()) &&
                     (searchedDate.isNullOrBlank() || flight.dateFrom == searchedDate)
         }
 
@@ -105,12 +112,5 @@ class SearchFlights : Fragment() {
         binding.recyclerView.visibility = View.GONE
         binding.textView7.visibility = View.VISIBLE
     }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        val activity = requireActivity() as? MainActivity
-        activity?.setBottomNavigation(false)
-    }
-
 
 }
