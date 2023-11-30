@@ -37,7 +37,6 @@
     <string name="order_confirmed">Order confirmed</string>
     <string name="order_confirmed_message">Thank you for your order. You will receive email confirmation shortly.</string>
     <string name="see_details">See Details</string>
-    <string name="app_id">682266773993756</string>
     <string name="calendar_txt_select">Select Date</string>
     <string name="txtContactDetails">Contact Details</string>
     <string name="txtContactDescription">(For E-Ticket/Voucher)</string>
@@ -82,5 +81,10 @@
     <string name="btnBook">Book a trip</string>
 
     <string name="calendar_btn_search">Search date</string>
+
+
+    <string name="facebook_app_id">682266773993756</string>
+    <string name="fb_login_protocol_scheme">fb1234</string>
+    <string name="facebook_client_token">437bef2de635e963d27131849e4acb39</string>
 
 </resources>

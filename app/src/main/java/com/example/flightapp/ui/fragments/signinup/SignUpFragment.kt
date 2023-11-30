@@ -1,19 +1,27 @@
 package com.example.flightapp.ui.fragments.signinup
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.flightapp.R
 import com.example.flightapp.databinding.FragmentSignInBinding
+import com.facebook.AccessToken
+import com.facebook.CallbackManager
+import com.facebook.FacebookCallback
+import com.facebook.FacebookException
+import com.facebook.login.LoginResult
+import com.facebook.login.widget.LoginButton
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 
@@ -21,6 +29,8 @@ class SignUpFragment : Fragment() {
     private lateinit var binding: FragmentSignInBinding
     private lateinit var mGoogleSignInClient: GoogleSignInClient
     private lateinit var mAuth: FirebaseAuth
+    private lateinit var callbackManager: CallbackManager
+    private lateinit var buttonFacebookLogin: LoginButton
 
     private val startForResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -34,6 +44,7 @@ class SignUpFragment : Fragment() {
                 ).show()
             }
         }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -63,9 +74,50 @@ class SignUpFragment : Fragment() {
             .requestIdToken(getString(R.string.default_web_client_id)).requestEmail().build()
         mGoogleSignInClient = GoogleSignIn.getClient(requireContext(), gso)
 
+
+        //Facebook
+        callbackManager = CallbackManager.Factory.create()
+        buttonFacebookLogin = binding.facebookSignIn
+        buttonFacebookLogin.setReadPermissions("email", "public_profile")
+        buttonFacebookLogin.registerCallback(
+            callbackManager,
+            object : FacebookCallback<LoginResult> {
+                override fun onSuccess(loginResult: LoginResult) {
+                    handleFacebookAccessToken(loginResult.accessToken)
+                }
+
+                override fun onCancel() {
+                    Log.d("TAG", "facebook:onCancel")
+                }
+
+                override fun onError(error: FacebookException) {
+                    Log.d("TAG", "facebook:onError", error)
+                }
+            },
+        )
+
         return binding.root
     }
 
+    private fun handleFacebookAccessToken(token: AccessToken) {
+        val credential = FacebookAuthProvider.getCredential(token.token)
+        mAuth.signInWithCredential(credential).addOnCompleteListener(requireActivity()) { task ->
+            if (task.isSuccessful) {
+                val user = mAuth.currentUser
+                Toast.makeText(
+                    requireContext(), "Signed in as ${user?.displayName}", Toast.LENGTH_SHORT
+                ).show()
+                onSignInSuccess()
+            } else {
+                Toast.makeText(
+                    requireContext(),
+                    "Authentication failed: ${task.exception?.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
+                Log.e("AuthenticationError", task.exception?.message, task.exception)
+            }
+        }
+    }
 
     private fun createAccountWithEmail(email: String, password: String) {
         mAuth.createUserWithEmailAndPassword(email, password)
