@@ -9,36 +9,25 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.flightapp.R
 import com.example.flightapp.databinding.FragmentViewPagerBinding
+import com.example.flightapp.ui.activities.MainActivity
 import com.example.flightapp.ui.adapters.viewpager.OnBoarding
 import com.google.firebase.auth.FirebaseAuth
 
 
 class ViewPagerFragment : Fragment() {
     private lateinit var binding: FragmentViewPagerBinding
-    lateinit var viewPager: ViewPager2
+    private lateinit var viewPager: ViewPager2
     lateinit var data: List<ViewPagerDto>
-    private lateinit var mAuth: FirebaseAuth
-
-
-    override fun onStart() {
-        super.onStart()
-        if (mAuth.currentUser != null) {
-            findNavController().navigate(R.id.action_viewPagerFragment_to_homeFragment)
-        }
-    }
 
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentViewPagerBinding.inflate(inflater)
-        mAuth = FirebaseAuth.getInstance()
         data = listOf<ViewPagerDto>(
             ViewPagerDto(R.drawable.onboardingfirst, resources.getString(R.string.firstOnBoarding)),
             ViewPagerDto(
-                R.drawable.onboardingsecond,
-                resources.getString(R.string.secondOnBoarding)
+                R.drawable.onboardingsecond, resources.getString(R.string.secondOnBoarding)
             ),
             ViewPagerDto(R.drawable.onboardingthird, resources.getString(R.string.thirdOnBoarding))
         )
@@ -46,6 +35,10 @@ class ViewPagerFragment : Fragment() {
         viewPager.isUserInputEnabled = false
         setAdapter(data)
         setButtonsListeners()
+
+        val activity = activity as MainActivity
+        activity.setBottomNavigation(false)
+
         return binding.root
     }
 

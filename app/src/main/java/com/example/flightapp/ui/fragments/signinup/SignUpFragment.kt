@@ -22,17 +22,18 @@ class SignUpFragment : Fragment() {
     private lateinit var mGoogleSignInClient: GoogleSignInClient
     private lateinit var mAuth: FirebaseAuth
 
-    private val startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
-        try {
-            val account = task.getResult(ApiException::class.java)
-            firebaseAuthWithGoogle(account.idToken!!)
-        } catch (e: ApiException) {
-            Toast.makeText(
-                requireContext(), "Google sign in failed: ${e.message}", Toast.LENGTH_SHORT
-            ).show()
+    private val startForResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
+            try {
+                val account = task.getResult(ApiException::class.java)
+                firebaseAuthWithGoogle(account.idToken!!)
+            } catch (e: ApiException) {
+                Toast.makeText(
+                    requireContext(), "Google sign in failed: ${e.message}", Toast.LENGTH_SHORT
+                ).show()
+            }
         }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -48,13 +49,18 @@ class SignUpFragment : Fragment() {
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 createAccountWithEmail(email, password)
             } else {
-                Toast.makeText(requireContext(), "please fill email and password fields", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    "please fill email and password fields",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
         binding.txtSignUp.setOnClickListener {
             findNavController().popBackStack()
         }
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken(getString(R.string.default_web_client_id)).requestEmail().build()
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id)).requestEmail().build()
         mGoogleSignInClient = GoogleSignIn.getClient(requireContext(), gso)
 
         return binding.root
@@ -62,19 +68,20 @@ class SignUpFragment : Fragment() {
 
 
     private fun createAccountWithEmail(email: String, password: String) {
-        mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(requireActivity()) { task ->
-            if (task.isSuccessful) {
-                val user = mAuth.currentUser
-                Toast.makeText(
-                    requireContext(), "Signed in as ${user?.displayName}", Toast.LENGTH_SHORT
-                ).show()
-                onSignInSuccess()
-            } else {
-                Toast.makeText(
-                    requireContext(), "Authentication failed", Toast.LENGTH_SHORT
-                ).show()
+        mAuth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener(requireActivity()) { task ->
+                if (task.isSuccessful) {
+                    val user = mAuth.currentUser
+                    Toast.makeText(
+                        requireContext(), "Signed in as ${user?.displayName}", Toast.LENGTH_SHORT
+                    ).show()
+                    onSignInSuccess()
+                } else {
+                    Toast.makeText(
+                        requireContext(), "Authentication failed", Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
-        }
     }
 
     private fun adaptLayout() {
@@ -88,7 +95,7 @@ class SignUpFragment : Fragment() {
         }
     }
 
-    fun signInWithGoogle() {
+    private fun signInWithGoogle() {
         val signInButton = binding.googleSignIn
         signInButton.setOnClickListener {
             val signInIntent = mGoogleSignInClient.signInIntent

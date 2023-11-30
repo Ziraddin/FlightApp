@@ -21,14 +21,14 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNav"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:visibility="gone"
         app:itemIconTint="@color/bottomnav"
         app:itemTextColor="@color/bottomnav"
-        android:layout_width="0dp"
-        android:background="@color/white"
-        android:visibility="gone"
-        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/fragmentContainerView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:menu="@menu/bottom_navigation"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_navigation" />
 </androidx.constraintlayout.widget.ConstraintLayout>

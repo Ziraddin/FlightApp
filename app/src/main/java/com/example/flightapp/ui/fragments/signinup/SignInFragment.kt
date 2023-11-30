@@ -33,25 +33,18 @@ class SignInFragment : Fragment() {
     private lateinit var callbackManager: CallbackManager
     private lateinit var buttonFacebookLogin: LoginButton
 
-    private val startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-        val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
-        try {
-            val account = task.getResult(ApiException::class.java)
-            firebaseAuthWithGoogle(account.idToken!!)
-        } catch (e: ApiException) {
-            Toast.makeText(
-                requireContext(), "Google sign in failed: ${e.message}", Toast.LENGTH_SHORT
-            ).show()
+    private val startForResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
+            try {
+                val account = task.getResult(ApiException::class.java)
+                firebaseAuthWithGoogle(account.idToken!!)
+            } catch (e: ApiException) {
+                Toast.makeText(
+                    requireContext(), "Google sign in failed: ${e.message}", Toast.LENGTH_SHORT
+                ).show()
+            }
         }
-    }
-
-    //Check user already signed in
-    override fun onStart() {
-        super.onStart()
-        if (mAuth.currentUser != null) {
-            findNavController().navigate(R.id.action_signInFragment_to_homeFragment)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -60,7 +53,8 @@ class SignInFragment : Fragment() {
 
         //Google
         mAuth = FirebaseAuth.getInstance()
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken(getString(R.string.default_web_client_id)).requestEmail().build()
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id)).requestEmail().build()
         mGoogleSignInClient = GoogleSignIn.getClient(requireContext(), gso)
 
         //Facebook
@@ -92,7 +86,11 @@ class SignInFragment : Fragment() {
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 signInWithEmail(email, password)
             } else {
-                Toast.makeText(requireContext(), "please fill email and password fields", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    requireContext(),
+                    "please fill email and password fields",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
 
@@ -117,18 +115,21 @@ class SignInFragment : Fragment() {
     }
 
     private fun signInWithEmail(email: String, password: String) {
-        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(requireActivity()) { task ->
-            if (task.isSuccessful) {
-                Toast.makeText(
-                    requireContext(), "Signed in as ${binding.edtEmail.text}", Toast.LENGTH_SHORT
-                ).show()
-                onSignInSuccess()
-            } else {
-                Toast.makeText(
-                    requireContext(), "Authentication failed", Toast.LENGTH_SHORT
-                ).show()
+        mAuth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener(requireActivity()) { task ->
+                if (task.isSuccessful) {
+                    Toast.makeText(
+                        requireContext(),
+                        "Signed in as ${binding.edtEmail.text}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    onSignInSuccess()
+                } else {
+                    Toast.makeText(
+                        requireContext(), "Authentication failed", Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
-        }
     }
 
     private fun onSignInSuccess() {
