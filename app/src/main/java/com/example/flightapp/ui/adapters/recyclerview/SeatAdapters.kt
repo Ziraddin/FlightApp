@@ -23,7 +23,7 @@ class SeatAdapters(private val listSeats: List<Seats>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val current = listSeats[position]
         return holder.bind(current)
-    }
+    }       
 
     inner class ViewHolder(private val binding: ListFlightSeatsBinding) :
         RecyclerView.ViewHolder(binding.root) {
