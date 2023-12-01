@@ -53,12 +53,10 @@
         android:label="SignUpFragment"
         tools:layout="@layout/fragment_sign_in">
         <action
-            android:id="@+id/action_signUpFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            android:id="@+id/action_signUpFragment_to_emailVerificationFragment"
+            app:destination="@id/emailVerificationFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
             app:popUpTo="@id/signInFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -221,4 +219,19 @@
         android:name="com.example.flightapp.ui.fragments.SelectSeatFragment"
         android:label="fragment_select_seat"
         tools:layout="@layout/fragment_select_seat" />
+    <fragment
+        android:id="@+id/emailVerificationFragment"
+        android:name="com.example.flightapp.ui.fragments.signinup.EmailVerificationFragment"
+        android:label="fragment_email_verification"
+        tools:layout="@layout/fragment_email_verification" >
+        <action
+            android:id="@+id/action_emailVerificationFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/emailVerificationFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

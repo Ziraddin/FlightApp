@@ -41,6 +41,8 @@ android {
     }
 }
 
+
+
 dependencies {
 
     implementation("androidx.core:core-ktx:1.12.0")
@@ -68,6 +70,10 @@ dependencies {
 
     //Circular Image
     implementation("de.hdodenhof:circleimageview:3.1.0")
+
+    //Lottie
+    val lottieVersion = "3.4.0"
+    implementation("com.airbnb.android:lottie:$lottieVersion")
 
     //Retrofit
     implementation("com.google.code.gson:gson:2.8.9")

@@ -86,5 +86,6 @@
     <string name="facebook_app_id">682266773993756</string>
     <string name="fb_login_protocol_scheme">fb1234</string>
     <string name="facebook_client_token">437bef2de635e963d27131849e4acb39</string>
+    <string name="verifying_your_email">Verifying Your Email</string>
 
 </resources>

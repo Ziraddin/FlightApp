@@ -33,6 +33,7 @@ class AccountFragment : Fragment() {
     private fun setUserInfo() {
         binding.txtName.text = mAuth.currentUser?.displayName ?: "no username"
         binding.txtEmail.text = mAuth.currentUser?.email ?: "no email address"
+        binding.txtNumber.text = mAuth.currentUser?.phoneNumber ?: "xxx xxx xx xx"
     }
 
     private fun logout() {

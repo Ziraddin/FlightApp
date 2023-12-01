@@ -156,17 +156,14 @@ class SignUpFragment : Fragment() {
     }
 
     private fun onSignInSuccess() {
-        findNavController().navigate(R.id.action_signUpFragment_to_homeFragment)
+        mAuth.currentUser!!.sendEmailVerification()
+        findNavController().navigate(R.id.action_signUpFragment_to_emailVerificationFragment)
     }
 
     private fun firebaseAuthWithGoogle(idToken: String) {
         val credential = GoogleAuthProvider.getCredential(idToken, null)
         mAuth.signInWithCredential(credential).addOnCompleteListener(requireActivity()) { task ->
             if (task.isSuccessful) {
-                val user = mAuth.currentUser
-                Toast.makeText(
-                    requireContext(), "Signed in as ${user?.displayName}", Toast.LENGTH_SHORT
-                ).show()
                 onSignInSuccess()
             } else {
                 Toast.makeText(
