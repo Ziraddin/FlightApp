@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.flightapp.R
 import com.example.flightapp.databinding.FragmentSelectSeatBinding
@@ -39,14 +40,36 @@ class SelectSeatFragment : Fragment() {
             Seats(R.drawable.seat_available),
             Seats(R.drawable.seat_available),
             Seats(R.drawable.seat_available),
-            Seats(R.drawable.seat_available,isSelected = true),
+            Seats(R.drawable.seat_available, notAvailable = true),
             Seats(R.drawable.seat_available),
             Seats(R.drawable.seat_available, notAvailable = true),
+            Seats(R.drawable.seat_available),
+            Seats(R.drawable.seat_available),
+            Seats(R.drawable.seat_available,notAvailable = true),
+            Seats(R.drawable.seat_available),
+            Seats(R.drawable.seat_available, notAvailable = true),
+            Seats(R.drawable.seat_available),
+            Seats(R.drawable.seat_available, notAvailable = true),
+            Seats(R.drawable.seat_available),
+            Seats(R.drawable.seat_available),
+            Seats(R.drawable.seat_available),
+            Seats(R.drawable.seat_available),
+            Seats(R.drawable.seat_available),
+            Seats(R.drawable.seat_available, notAvailable = true),
+            Seats(R.drawable.seat_available),
+            Seats(R.drawable.seat_available, notAvailable = true),
+            Seats(R.drawable.seat_available),
             Seats(R.drawable.seat_available)
+
         )
+
         val adapter = SeatAdapters(listOfSeats)
-        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        val adapterRight = SeatAdapters(listOfSeats)
+        binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
+        binding.recyclerView2.layoutManager = GridLayoutManager(requireContext(),3)
         binding.recyclerView.adapter = adapter
+        binding.recyclerView2.adapter = adapterRight
+
 
     }
 

@@ -2,42 +2,18 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_marginBottom="7dp"
+    android:layout_width="wrap_content"
+    android:layout_marginBottom="8dp"
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/imgSeat1"
+        android:id="@+id/imgSeat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        app:layout_constraintEnd_toStartOf="@+id/imgSeat2"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/seat_available" />
-
-    <ImageView
-        android:id="@+id/imgSeat2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/imgSeat1"
-        app:layout_constraintEnd_toStartOf="@+id/imgSeat3"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imgSeat1"
-        app:layout_constraintTop_toTopOf="@+id/imgSeat1"
-        app:srcCompat="@drawable/seat_notavailable" />
-
-    <ImageView
-        android:id="@+id/imgSeat3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/imgSeat1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imgSeat2"
-        app:layout_constraintTop_toTopOf="@+id/imgSeat1"
-        app:srcCompat="@drawable/seat_selected" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
