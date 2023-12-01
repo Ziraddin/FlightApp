@@ -63,8 +63,14 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-auth")
 
+    //Facebook
     implementation("com.facebook.android:facebook-android-sdk:12.2.0")
 
     //Circular Image
     implementation("de.hdodenhof:circleimageview:3.1.0")
+
+    //Retrofit
+    implementation("com.google.code.gson:gson:2.8.9")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 }
