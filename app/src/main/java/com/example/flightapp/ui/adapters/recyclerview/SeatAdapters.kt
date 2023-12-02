@@ -28,25 +28,45 @@ class SeatAdapters(private val listSeats: List<Seats>) :
     inner class ViewHolder(private val binding: ListFlightSeatsBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(seat: Seats) {
-
-            binding.imgSeat.setImageResource(if (seat.isSelected) R.drawable.seat_selected else if (seat.notAvailable) R.drawable.seat_notavailable else R.drawable.seat_available)
+        init {
             binding.imgSeat.setOnClickListener {
+                val seat = listSeats[adapterPosition]
                 if (!seat.notAvailable) {
                     seat.isSelected = !seat.isSelected
-                    selectedSeats.clear()
-                    selectedSeats.addAll(listSeats.filter { it.isSelected })
-                    notifyDataSetChanged()
+                    if(seat.isSelected){
+                        selectedSeats.add(seat)
+                        notifyDataSetChanged()
+                    }else{
+                        selectedSeats.remove(seat)
+                        notifyDataSetChanged()
+                    }
+
+
                 }
+
             }
 
+        }
 
+        fun bind(seat: Seats) {
+            binding.imgSeat.setImageResource(
+                when {
+                    seat.isSelected -> R.drawable.seat_selected
+                    seat.notAvailable -> R.drawable.seat_notavailable
+                    else -> R.drawable.seat_available
+                }
+            )
         }
     }
 
+
     fun getSelectedSeats(): List<Seats> {
-        return selectedSeats
+        return selectedSeats.filter { it.isSelected }
     }
 
-
 }
+
+
+
+
+
