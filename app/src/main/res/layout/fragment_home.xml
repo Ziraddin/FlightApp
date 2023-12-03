@@ -54,13 +54,14 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <RadioButton
-                    android:id="@+id/radioButton"
+                    android:id="@+id/radioBtnOneWay"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:checked="true"
                     android:text="@string/radio_one_way" />
 
                 <RadioButton
-                    android:id="@+id/radioButton2"
+                    android:id="@+id/radioBtnRound"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="15dp"
@@ -153,6 +154,32 @@
                 app:layout_constraintEnd_toStartOf="@+id/rightGuidelineCard"
                 app:layout_constraintStart_toStartOf="@+id/leftGuidelineCard"
                 app:layout_constraintTop_toBottomOf="@+id/txtDeparture" />
+            <TextView
+                android:id="@+id/txtReturn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginTop="8dp"
+                android:text="@string/txtReturnDate"
+                android:textColor="@color/txtDarkBlue"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@+id/leftGuidelineCard"
+                app:layout_constraintTop_toBottomOf="@+id/edtDeparture" />
+
+            <EditText
+                android:id="@+id/edtReturn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:ems="10"
+                android:inputType="text"
+                android:background="@drawable/edt_home"
+                android:padding="10dp"
+                android:focusable="false"
+                android:drawableStart="@drawable/calendar_month_24"
+                app:layout_constraintEnd_toStartOf="@+id/rightGuidelineCard"
+                app:layout_constraintStart_toStartOf="@+id/leftGuidelineCard"
+                app:layout_constraintTop_toBottomOf="@+id/txtReturn" />
 
             <TextView
                 android:id="@+id/txtTravelers"
@@ -163,18 +190,19 @@
                 android:textColor="@color/txtDarkBlue"
                 android:textSize="15sp"
                 app:layout_constraintStart_toStartOf="@+id/leftGuidelineCard"
-                app:layout_constraintTop_toBottomOf="@+id/edtDeparture" />
+                app:layout_constraintTop_toBottomOf="@+id/edtReturn" />
 
             <EditText
                 android:id="@+id/edtTravelers"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:drawableStart="@drawable/person_24"
-                android:inputType="text"
                 android:background="@drawable/edt_home"
+                android:drawableStart="@drawable/person_24"
+                android:ems="10"
+                android:inputType="text"
                 android:padding="10dp"
                 app:layout_constraintEnd_toStartOf="@+id/rightGuidelineCard"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/leftGuidelineCard"
                 app:layout_constraintTop_toBottomOf="@+id/txtTravelers" />
 
@@ -182,12 +210,13 @@
                 android:id="@+id/btnSearch"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:background="@color/btn_blue"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/btn_next"
                 android:text="@string/btnSearchFlights"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toStartOf="@+id/rightGuidelineCard"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/leftGuidelineCard"
                 app:layout_constraintTop_toBottomOf="@+id/edtTravelers" />
         </androidx.constraintlayout.widget.ConstraintLayout>

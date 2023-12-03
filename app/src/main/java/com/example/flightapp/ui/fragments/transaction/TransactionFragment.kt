@@ -21,9 +21,6 @@ class TransactionFragment : Fragment() {
     }
 
     private fun setNavigation() {
-        binding.arrowBack.setOnClickListener {
-            findNavController().popBackStack(R.id.homeFragment, false)
-        }
 
         binding.btnTransaction.setOnClickListener {
             findNavController().navigate(R.id.action_transactionFragment_to_homeFragment)

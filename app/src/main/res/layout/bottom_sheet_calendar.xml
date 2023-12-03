@@ -52,7 +52,7 @@
             android:id="@+id/btnSelect"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@color/btn_blue"
+            android:background="@drawable/btn_next"
             android:text="@string/calendar_btn_search"
             android:textAllCaps="false"
             android:textColor="@color/white"

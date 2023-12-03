@@ -7,22 +7,29 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.flightapp.R
-import com.example.flightapp.databinding.FragmentPaymentSuccessfulBinding
+import com.example.flightapp.databinding.FragmentPaymentDetailsBinding
 
-class PaymentSuccessfulFragment : Fragment() {
-    private lateinit var binding:FragmentPaymentSuccessfulBinding
+class PaymentDetailsFragment : Fragment() {
+   private lateinit var binding : FragmentPaymentDetailsBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentPaymentSuccessfulBinding.inflate(inflater)
+        binding = FragmentPaymentDetailsBinding.inflate(inflater)
         setNavigation()
+
         return binding.root
     }
 
     private fun setNavigation(){
-        binding.btnSeeDetails.setOnClickListener {
-            findNavController().navigate(R.id.action_paymentSuccessfulFragment_to_transactionDetailsFragment2)
+        binding.arrowBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
+        binding.btnProceed.setOnClickListener {
+            findNavController().navigate(R.id.action_paymentDetailsFragment_to_paymentSuccessfulFragment)
         }
     }
+
+
 }

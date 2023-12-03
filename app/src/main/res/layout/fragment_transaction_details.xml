@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.transaction.TransactionDetailsFragment">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView6"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/rightGuideline"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/txtPaymentMethod">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/txtUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Name"
+                android:textColor="@color/txtGray"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="@string/txtTotal"
+                android:textColor="@color/txtGray"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/txtUserName" />
+
+            <TextView
+                android:id="@+id/txtPrice1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="$0"
+                android:textColor="@color/txtGray"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/txtTotal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txtUserName" />
+
+            <TextView
+                android:id="@+id/txtPrice2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$0"
+                android:textColor="@color/txtDarkBlue"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/txtTotal"
+                app:layout_constraintStart_toStartOf="@+id/txtPrice1"
+                app:layout_constraintTop_toTopOf="@+id/txtTotal" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
+
+    <ImageView
+        android:id="@+id/arrowBack"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/arrow_back_ios_darkblue"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toTopOf="@+id/topGuideline" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/topGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.06" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/rightGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.94" />
+
+    <TextView
+        android:id="@+id/txtDeleteAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/txtTransactionDetails"
+        android:textColor="@color/txtDarkBlue"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/arrowBack" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/leftGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView9"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="32dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/txtDeleteAccount">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgContactProfile"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginBottom="16dp"
+
+                android:src="@drawable/avatar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/txtContactName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Name"
+                app:layout_constraintBottom_toBottomOf="@+id/imgContactProfile"
+                app:layout_constraintStart_toEndOf="@+id/imgContactProfile"
+                app:layout_constraintTop_toTopOf="@+id/imgContactProfile" />
+
+            <TextView
+                android:id="@+id/txtCompanyName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Company Name"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtWhereFrom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="GTH"
+                android:textColor="@color/txtDarkBlue"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/txtCompanyName"
+                app:layout_constraintTop_toBottomOf="@+id/txtCompanyName" />
+
+            <TextView
+                android:id="@+id/txtWhereTo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="KHQ"
+                android:textColor="@color/txtDarkBlue"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/txtWhereFrom"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txtWhereFrom" />
+
+            <ImageView
+                android:id="@+id/imageView20"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/vector__5_"
+                app:layout_constraintBottom_toBottomOf="@+id/txtWhereFrom"
+                app:layout_constraintEnd_toStartOf="@+id/txtWhereTo"
+                app:layout_constraintStart_toEndOf="@+id/txtWhereFrom"
+                app:layout_constraintTop_toTopOf="@+id/txtWhereFrom" />
+
+            <TextView
+                android:id="@+id/txtTakeOffTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="14.00"
+                android:textColor="@color/txtGray"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@+id/txtWhereFrom"
+                app:layout_constraintTop_toBottomOf="@+id/txtWhereFrom" />
+
+            <TextView
+                android:id="@+id/txtLandTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="07.15"
+                android:textColor="@color/txtGray"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/txtWhereTo"
+                app:layout_constraintTop_toBottomOf="@+id/txtWhereTo" />
+
+            <ImageView
+                android:id="@+id/imageView21"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:src="@drawable/accounticon"
+                app:layout_constraintBottom_toTopOf="@+id/imgContactProfile"
+                app:layout_constraintStart_toStartOf="@+id/txtTakeOffTime"
+                app:layout_constraintTop_toBottomOf="@+id/txtTakeOffTime" />
+
+            <TextView
+                android:id="@+id/txtCountPerson"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="2"
+                android:textColor="@color/txtDarkBlue"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView21"
+                app:layout_constraintStart_toEndOf="@+id/imageView21"
+                app:layout_constraintTop_toTopOf="@+id/imageView21" />
+
+            <TextView
+                android:id="@+id/textView45"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:text="Person"
+                android:textColor="@color/txtDarkBlue"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/txtCountPerson"
+                app:layout_constraintStart_toEndOf="@+id/txtCountPerson"
+                app:layout_constraintTop_toTopOf="@+id/txtCountPerson" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/textView46"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/txtStatus"
+        android:textStyle="bold"
+        android:textColor="@color/txtGray"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/cardView9" />
+
+    <TextView
+        android:id="@+id/textView47"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textStyle="bold"
+        android:textColor="@color/txtGray"
+        android:text="@string/txtInvoice"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/textView46" />
+
+    <TextView
+        android:id="@+id/textView48"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textStyle="bold"
+        android:textColor="@color/txtGray"
+        android:text="@string/txtTransactionDate"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/textView47" />
+
+    <TextView
+        android:id="@+id/textView49"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textStyle="bold"
+        android:textColor="@color/txtGray"
+        android:text="@string/txtPaymentMethod"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/textView48" />
+
+    <TextView
+        android:id="@+id/txtSuccess"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtSuccess"
+        android:textColor="@color/btn_blue"
+        app:layout_constraintBottom_toBottomOf="@+id/textView46"
+        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+        app:layout_constraintTop_toTopOf="@+id/textView46" />
+
+    <TextView
+        android:id="@+id/txtInvoice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="INV49210"
+        android:textColor="@color/txtDarkBlue"
+        app:layout_constraintBottom_toBottomOf="@+id/textView47"
+        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+        app:layout_constraintTop_toTopOf="@+id/textView47" />
+
+    <TextView
+        android:id="@+id/txtTransactionDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wed, 18 OCT"
+        android:textColor="@color/txtDarkBlue"
+        app:layout_constraintBottom_toBottomOf="@+id/textView48"
+        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+        app:layout_constraintTop_toTopOf="@+id/textView48" />
+
+    <TextView
+        android:id="@+id/txtPaymentMethod"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txtPayPal"
+        android:textColor="@color/txtDarkBlue"
+        app:layout_constraintBottom_toBottomOf="@+id/textView49"
+        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+        app:layout_constraintTop_toTopOf="@+id/textView49" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSave"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_next"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:layout_marginBottom="32dp"
+        android:text="Save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline" />
+</androidx.constraintlayout.widget.ConstraintLayout>

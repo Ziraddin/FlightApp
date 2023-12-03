@@ -79,8 +79,22 @@
     <string name="txtGoSomewhere">Let’s go somewhere</string>
     <string name="txtTransactionDescription">After book a trip you can manage orders and see E-ticket here.</string>
     <string name="btnBook">Book a trip</string>
-
+    <string name="txtReturnDate">Return Date</string>
+    <string name="txtDigitalPayment">Digital payment method(s)</string>
+    <string name="txtPaymentSubHeader">Swipe left to set your default method</string>
     <string name="calendar_btn_search">Search date</string>
+    <string name="txtHidden">***</string>
+    <string name="btnProceed">Proceed The Payment</string>
+    <string name="txtSubtotal">Subtotal</string>
+    <string name="txtTransactionDetails">Transaction Details</string>
+    <string name="txtStatus">Status</string>
+    <string name="txtInvoice">Invoice</string>
+    <string name="txtTransactionDate">Transaction Date</string>
+    <string name="txtPaymentMethod">Payment Method</string>
+    <string name="txtSuccess">Success</string>
+    <string name="txtFailed">Failed</string>
+    <string name="txtPayPal">PayPal</string>
+    <string name="txtCard">Credit Card</string>
 
 
     <string name="facebook_app_id">682266773993756</string>
