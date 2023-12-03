@@ -11,7 +11,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        android:src="@drawable/onboardingfirst"
+        android:src="@drawable/viewpagerimg1"
         app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
         app:layout_constraintHeight_percent="0.6"
         app:layout_constraintHorizontal_bias="0.0"

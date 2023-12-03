@@ -25,11 +25,11 @@ class ViewPagerFragment : Fragment() {
     ): View {
         binding = FragmentViewPagerBinding.inflate(inflater)
         data = listOf<ViewPagerDto>(
-            ViewPagerDto(R.drawable.onboardingfirst, resources.getString(R.string.firstOnBoarding)),
+            ViewPagerDto(R.drawable.viewpagerimg1, resources.getString(R.string.firstOnBoarding)),
             ViewPagerDto(
-                R.drawable.onboardingsecond, resources.getString(R.string.secondOnBoarding)
+                R.drawable.viewpagerimg2, resources.getString(R.string.secondOnBoarding)
             ),
-            ViewPagerDto(R.drawable.onboardingthird, resources.getString(R.string.thirdOnBoarding))
+            ViewPagerDto(R.drawable.viewpagerimg3, resources.getString(R.string.thirdOnBoarding))
         )
         viewPager = binding.viewPager
         viewPager.isUserInputEnabled = false

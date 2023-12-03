@@ -13,18 +13,18 @@ import androidx.navigation.fragment.findNavController
 import com.example.flightapp.R
 import com.example.flightapp.databinding.FragmentSignInBinding
 import com.facebook.AccessToken
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInClient
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.api.ApiException
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.GoogleAuthProvider
 import com.facebook.CallbackManager
 import com.facebook.FacebookCallback
 import com.facebook.FacebookException
 import com.facebook.login.LoginResult
 import com.facebook.login.widget.LoginButton
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FacebookAuthProvider
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 
 class SignInFragment : Fragment() {
     private lateinit var binding: FragmentSignInBinding
@@ -61,7 +61,6 @@ class SignInFragment : Fragment() {
         callbackManager = CallbackManager.Factory.create()
         buttonFacebookLogin = binding.facebookSignIn
         buttonFacebookLogin.setReadPermissions("email", "public_profile")
-
         buttonFacebookLogin.registerCallback(
             callbackManager,
             object : FacebookCallback<LoginResult> {
@@ -155,10 +154,18 @@ class SignInFragment : Fragment() {
         mAuth.signInWithCredential(credential).addOnCompleteListener(requireActivity()) { task ->
             if (task.isSuccessful) {
                 val user = mAuth.currentUser
-                Toast.makeText(
-                    requireContext(), "Signed in as ${user?.displayName}", Toast.LENGTH_SHORT
-                ).show()
-                onSignInSuccess()
+                if (!user!!.isEmailVerified) {
+                    Toast.makeText(
+                        requireContext(),
+                        "no verified account for this email address : ${mAuth.currentUser!!.email}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    Toast.makeText(
+                        requireContext(), "Signed in as ${user.displayName}", Toast.LENGTH_SHORT
+                    ).show()
+                    onSignInSuccess()
+                }
             } else {
                 Toast.makeText(
                     requireContext(), "Authentication failed", Toast.LENGTH_SHORT
@@ -169,21 +176,24 @@ class SignInFragment : Fragment() {
 
     private fun handleFacebookAccessToken(token: AccessToken) {
         val credential = FacebookAuthProvider.getCredential(token.token)
-        mAuth.signInWithCredential(credential).addOnCompleteListener((requireActivity())) { task ->
-            if (task.isSuccessful) {
-                val user = mAuth.currentUser
-                Toast.makeText(
-                    requireContext(), "Signed in as ${user?.displayName}", Toast.LENGTH_SHORT
-                ).show()
-                onSignInSuccess()
-            } else {
-                Toast.makeText(
-                    requireContext(),
-                    "Authentication failed.",
-                    Toast.LENGTH_SHORT,
-                ).show()
+        mAuth.signInWithCredential(credential)
+            .addOnCompleteListener(requireActivity()) { task ->
+                if (task.isSuccessful) {
+                    val user = mAuth.currentUser
+                    Toast.makeText(
+                        requireContext(),
+                        "Signed in as ${user?.displayName}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    onSignInSuccess()
+                } else {
+                    Toast.makeText(
+                        requireContext(),
+                        "Authentication failed: ${task.exception?.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }
-        }
     }
 
 

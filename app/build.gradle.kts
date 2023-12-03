@@ -41,6 +41,8 @@ android {
     }
 }
 
+
+
 dependencies {
 
     implementation("androidx.core:core-ktx:1.12.0")
@@ -63,11 +65,18 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-auth")
 
-    implementation("com.facebook.android:facebook-login:latest.release")
-
+    //Facebook
+    implementation("com.facebook.android:facebook-android-sdk:12.2.0")
 
     //Circular Image
-    implementation ("de.hdodenhof:circleimageview:3.1.0")
+    implementation("de.hdodenhof:circleimageview:3.1.0")
 
+    //Lottie
+    val lottieVersion = "3.4.0"
+    implementation("com.airbnb.android:lottie:$lottieVersion")
 
+    //Retrofit
+    implementation("com.google.code.gson:gson:2.8.9")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 }

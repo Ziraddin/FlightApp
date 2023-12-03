@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         mAuth = FirebaseAuth.getInstance()
         binding = ActivityMainBinding.inflate(layoutInflater)
-        FacebookSdk.setClientToken("b70c49a212f1a6eeb5372eb96dcde0e1")
+
         FacebookSdk.sdkInitialize(applicationContext)
         setContentView(binding.root)
 
