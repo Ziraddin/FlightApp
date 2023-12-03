@@ -87,5 +87,14 @@
     <string name="txtHidden">***</string>
     <string name="btnProceed">Proceed The Payment</string>
     <string name="txtSubtotal">Subtotal</string>
+    <string name="txtTransactionDetails">Transaction Details</string>
+    <string name="txtStatus">Status</string>
+    <string name="txtInvoice">Invoice</string>
+    <string name="txtTransactionDate">Transaction Date</string>
+    <string name="txtPaymentMethod">Payment Method</string>
+    <string name="txtSuccess">Success</string>
+    <string name="txtFailed">Failed</string>
+    <string name="txtPayPal">PayPal</string>
+    <string name="txtCard">Credit Card</string>
 
 </resources>

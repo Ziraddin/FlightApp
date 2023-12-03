@@ -35,7 +35,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:background="@color/btn_blue"
+            android:background="@drawable/btn_next"
             android:text="Update"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="@+id/editTextNumber"
