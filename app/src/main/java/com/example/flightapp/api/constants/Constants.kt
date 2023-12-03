@@ -1,7 +1,7 @@
 package com.example.flightapp.api.constants
 
 object Constants {
-    const val url = "localhost:8080/"
+    const val url = "https://spring-flight-app-project.onrender.com/"
     const val users = "users/"
     const val flights = "flights/"
     const val transactions = "transactions/"
