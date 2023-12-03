@@ -28,7 +28,7 @@ class TransactionDetailsFragment : Fragment() {
         }
 
         binding.btnSave.setOnClickListener {
-            findNavController().navigate(R.id.action_transactionDetailsFragment_to_homeFragment)
+            findNavController().navigate(R.id.action_transactionDetailsFragment2_to_homeFragment)
 
 
         }

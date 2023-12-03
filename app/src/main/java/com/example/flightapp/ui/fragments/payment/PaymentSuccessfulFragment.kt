@@ -22,7 +22,7 @@ class PaymentSuccessfulFragment : Fragment() {
 
     private fun setNavigation(){
         binding.btnSeeDetails.setOnClickListener {
-            findNavController().navigate(R.id.action_paymentSuccessfulFragment_to_transactionDetailsFragment)
+            findNavController().navigate(R.id.action_paymentSuccessfulFragment_to_transactionDetailsFragment2)
         }
     }
 }
