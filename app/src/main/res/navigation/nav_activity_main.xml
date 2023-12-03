@@ -220,5 +220,23 @@
         android:id="@+id/selectSeatFragment"
         android:name="com.example.flightapp.ui.fragments.SelectSeatFragment"
         android:label="fragment_select_seat"
-        tools:layout="@layout/fragment_select_seat" />
+        tools:layout="@layout/fragment_select_seat" >
+        <action
+            android:id="@+id/action_selectSeatFragment_to_paymentDetailsFragment"
+            app:destination="@id/paymentDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentDetailsFragment"
+        android:name="com.example.flightapp.ui.fragments.payment.PaymentDetailsFragment"
+        android:label="fragment_payment_details"
+        tools:layout="@layout/fragment_payment_details" >
+        <action
+            android:id="@+id/action_paymentDetailsFragment_to_paymentSuccessfulFragment"
+            app:destination="@id/paymentSuccessfulFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/paymentSuccessfulFragment"
+        android:name="com.example.flightapp.ui.fragments.payment.PaymentSuccessfulFragment"
+        android:label="fragment_payment_successful"
+        tools:layout="@layout/fragment_payment_successful" />
 </navigation>

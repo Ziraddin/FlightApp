@@ -37,6 +37,10 @@ class SelectSeatFragment : Fragment() {
         binding.arrowBack.setOnClickListener {
             findNavController().popBackStack()
         }
+
+        binding.btnSelectSeat.setOnClickListener {
+            findNavController().navigate(R.id.action_selectSeatFragment_to_paymentDetailsFragment)
+        }
     }
 
     private fun setAdapter() {
