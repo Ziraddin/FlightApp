@@ -10,10 +10,10 @@ import retrofit2.http.PUT
 import retrofit2.http.Query
 
 interface UserApi {
-    @GET("users/getUser")
+    @GET("$users/getUser")
     suspend fun getUserById(@Query("id") id: Int): User
 
-    @POST("users/addUser")
+    @POST("$users/addUser")
     suspend fun createUser(@Body user: User): User
 
     @PUT("$users/updateUser")

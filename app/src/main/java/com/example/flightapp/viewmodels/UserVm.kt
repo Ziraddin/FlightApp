@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 
 class UserVm() : ViewModel() {
 
-    var userLiveData: MutableLiveData<User> = MutableLiveData()
+    private var userLiveData: MutableLiveData<User> = MutableLiveData()
     private val userApiCall = RetrofitClient.userApi
 
     fun addUser(user: User) {
