@@ -28,6 +28,7 @@ import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.userProfileChangeRequest
+import kotlinx.coroutines.runBlocking
 
 class SignUpFragment : Fragment() {
     private lateinit var binding: FragmentSignInBinding
@@ -130,10 +131,12 @@ class SignUpFragment : Fragment() {
                         "Signed in as ${user.firstname + " " + user.lastname}",
                         Toast.LENGTH_SHORT
                     ).show()
-                    userVm.addUser(user)
-                    userFirebase!!.updateProfile(userProfileChangeRequest {
-                        displayName = user.firstname + " " + user.lastname
-                    })
+                    runBlocking {
+                        userVm.addUser(user)
+                        userFirebase!!.updateProfile(userProfileChangeRequest {
+                            displayName = user.firstname + " " + user.lastname
+                        })
+                    }
                     onSignInSuccess()
                 } else {
                     Toast.makeText(
@@ -151,14 +154,16 @@ class SignUpFragment : Fragment() {
                 Toast.makeText(
                     requireContext(), "Signed in as ${user?.displayName}", Toast.LENGTH_SHORT
                 ).show()
-                userVm.addUser(
-                    User(
-                        firstname = user!!.displayName!!.split(" ")[0],
-                        lastname = user.displayName!!.split(" ")[1],
-                        email = user.email!!,
-                        password = user.uid
+                runBlocking {
+                    userVm.addUser(
+                        User(
+                            firstname = user!!.displayName!!.split(" ")[0],
+                            lastname = user.displayName!!.split(" ")[1],
+                            email = user.email!!,
+                            password = user.uid
+                        )
                     )
-                )
+                }
                 onSignInSuccess()
             } else {
                 Toast.makeText(
@@ -184,14 +189,21 @@ class SignUpFragment : Fragment() {
         mAuth.signInWithCredential(credential).addOnCompleteListener(requireActivity()) { task ->
             if (task.isSuccessful) {
                 val user = mAuth.currentUser
-                userVm.addUser(
-                    User(
-                        firstname = user!!.displayName!!.split(" ")[0],
-                        lastname = user.displayName!!.split(" ")[1],
-                        email = user.email!!,
-                        password = user.uid
+                Toast.makeText(
+                    requireContext(),
+                    "Signed in as ${user!!.displayName}",
+                    Toast.LENGTH_SHORT
+                ).show()
+                runBlocking {
+                    userVm.addUser(
+                        User(
+                            firstname = user.displayName!!.split(" ")[0],
+                            lastname = user.displayName!!.split(" ")[1],
+                            email = user.email!!,
+                            password = user.uid
+                        )
                     )
-                )
+                }
                 onSignInSuccess()
             } else {
                 Toast.makeText(
@@ -202,6 +214,6 @@ class SignUpFragment : Fragment() {
     }
 
     private fun onSignInSuccess() {
-        findNavController().navigate(R.id.action_signUpFragment_to_emailVerificationFragment)
+        findNavController().navigate(R.id.action_signUpFragment_to_homeFragment)
     }
 }
