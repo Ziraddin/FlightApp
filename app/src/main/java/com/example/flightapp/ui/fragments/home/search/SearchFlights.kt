@@ -5,6 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.flightapp.R
@@ -12,10 +15,12 @@ import com.example.flightapp.databinding.FragmentSearchFlightsBinding
 import com.example.flightapp.ui.activities.MainActivity
 import com.example.flightapp.ui.adapters.recyclerview.Flight
 import com.example.flightapp.ui.adapters.recyclerview.FlightTicketAdapter
+import com.example.flightapp.viewmodels.FlightVm
 import java.util.Locale
 
 class SearchFlights : Fragment() {
     private lateinit var binding: FragmentSearchFlightsBinding
+    private lateinit var flightVm: FlightVm
 
     override fun onStart() {
         super.onStart()
@@ -28,6 +33,7 @@ class SearchFlights : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentSearchFlightsBinding.inflate(inflater)
+        flightVm = ViewModelProvider(this)[FlightVm::class.java]
         setAdapter()
 
         binding.arrowBack.setOnClickListener {
@@ -40,60 +46,21 @@ class SearchFlights : Fragment() {
         val searchedDestinationFrom: String? = arguments?.getString("destinationFrom")
         val searchedDestinationTo: String? = arguments?.getString("destinationTo")
         val searchedDate: String? = arguments?.getString("date")
-        val flightTickets = mutableListOf(
-            Flight(
-                txt1 = "LGA",
-                txt2 = "DAD",
-                from = "London",
-                to = "New Jersey",
-                hourTo = "10:00",
-                hourFrom = "12:00",
-                dateFrom = "2023-12-01",
-                daterTo = "2023-12-01",
-                companyName = "Airline A",
-                companyImg = R.drawable.person_24,
-                price = 250,
-                duration = "2 hours 0 minutes"
-            ),
-            Flight(
-                txt1 = "LGA",
-                txt2 = "DAD",
-                from = "London",
-                to = "Baku",
-                hourTo = "10:00",
-                hourFrom = "12:00",
-                dateFrom = "2023-12-01",
-                daterTo = "2023-12-01",
-                companyName = "Airline A",
-                companyImg = R.drawable.person_24,
-                price = 250,
-                duration = "2 hours 0 minutes"
-            ),
-            Flight(
-                txt1 = "LGA",
-                txt2 = "DAD",
-                from = "Istanbul",
-                to = "Baku",
-                hourTo = "10:00",
-                hourFrom = "12:00",
-                dateFrom = "2023-12-01",
-                daterTo = "2023-12-01",
-                companyName = "Airline A",
-                companyImg = R.drawable.person_24,
-                price = 250,
-                duration = "2 hours 0 minutes"
-            ),
 
-            )
+        val flightTickets = mutableListOf<Flight>()
 
-        val searchedFlights = flightTickets.filter { flight ->
-            (searchedDestinationFrom.isNullOrBlank() || flight.from.lowercase(Locale.getDefault()) == searchedDestinationFrom.toLowerCase()) &&
-                    (searchedDestinationTo.isNullOrBlank() || flight.to.lowercase(Locale.getDefault()) == searchedDestinationTo.toLowerCase()) &&
-                    (searchedDate.isNullOrBlank() || flight.dateFrom == searchedDate)
-        }
+        flightVm.getFlightsByArrivalDepartureAndDepartureTime(
+            searchedDestinationFrom!!,
+            searchedDestinationTo!!,
+            searchedDate!!
+        )
+        flightVm.flightLiveData.observe(viewLifecycleOwner, Observer {
+            flightTickets
+        })
 
-        if (searchedFlights.isNotEmpty()) {
-            setupRecyclerView(searchedFlights)
+
+        if (flightTickets.isNotEmpty()) {
+            setupRecyclerView(flightTickets)
         } else {
             showNoResultsMessage()
         }
