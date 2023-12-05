@@ -20,14 +20,10 @@ class FlightVm : ViewModel() {
             val response = flightApiCall.getFlightsByArrivalDepartureAndDepartureTime(
                 arrival, departure, departureTime
             )
-            if (response.isSuccessful) {
-                flightLiveData.postValue(response.body())
-            } else {
-                Log.d(
-                    "FlightVm", "getFlightsByArrivalDepartureAndDepartureTime: ${
-                        response.errorBody().toString()
-                    }"
-                )
+            try {
+                flightLiveData.postValue(response)
+            } catch (e: Exception) {
+                Log.d("FlightVm", "getFlightsByArrivalDepartureAndDepartureTime: ${e.message}")
             }
         }
     }

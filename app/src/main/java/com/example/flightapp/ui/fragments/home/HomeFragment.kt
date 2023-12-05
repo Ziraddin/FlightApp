@@ -1,34 +1,31 @@
 package com.example.flightapp.ui.fragments.home
 
-import android.app.DatePickerDialog
-import android.icu.util.Calendar
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.CalendarView
-import android.widget.DatePicker
 import android.widget.EditText
 import android.widget.TextView
-import androidx.core.os.BundleCompat
-import androidx.core.view.children
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.flightapp.R
 import com.example.flightapp.databinding.FragmentHomeBinding
 import com.example.flightapp.ui.activities.MainActivity
+import com.example.flightapp.viewmodels.FlightVm
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import kotlinx.coroutines.InternalCoroutinesApi
-import kotlinx.coroutines.NonDisposableHandle.parent
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
+    lateinit var flightVm: FlightVm
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentHomeBinding.inflate(inflater)
+        flightVm = ViewModelProvider(this)[FlightVm::class.java]
         setDateListener()
         btnClickListener()
         setLayout()
@@ -62,9 +59,12 @@ class HomeFragment : Fragment() {
         val btnSelect = view.findViewById<Button>(R.id.btnSelect)
         var selectedDate = ""
         calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
-            selectedDate = "$dayOfMonth/${month + 1}/$year"
+            selectedDate = if (dayOfMonth < 10) {
+                "$year-${month + 1}-0$dayOfMonth"
+            } else {
+                "$year-${month + 1}-$dayOfMonth"
+            }
             view.findViewById<TextView>(R.id.txtDate).text = selectedDate
-
         }
         btnSelect.setOnClickListener {
             editText.setText(selectedDate)
@@ -76,13 +76,20 @@ class HomeFragment : Fragment() {
 
     private fun btnClickListener() {
         binding.btnSearch.setOnClickListener {
+            val bundle = Bundle()
             val destinationFrom = binding.edtFrom.text.toString()
             val destinationTo = binding.edtTo.text.toString()
-            val date = binding.edtDeparture.text.toString()
-            val bundle = Bundle()
+            val departureDate = binding.edtDeparture.text.toString()
+
+            if (binding.radioGroup.checkedRadioButtonId == R.id.radioBtnRound) {
+                val returnDate = binding.edtReturn.text.toString()
+                bundle.putString("returnDate", returnDate)
+            }
+
             bundle.putString("destinationFrom", destinationFrom)
             bundle.putString("destinationTo", destinationTo)
-            bundle.putString("date", date)
+            bundle.putString("departureDate", departureDate)
+
             findNavController().navigate(R.id.action_homeFragment_to_searchFlights, bundle)
         }
     }

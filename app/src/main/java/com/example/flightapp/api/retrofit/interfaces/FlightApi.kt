@@ -15,7 +15,7 @@ interface FlightApi {
         @Query("arrival") arrival: String,
         @Query("departure") departure: String,
         @Query("departureTime") departureTime: String
-    ): Response<List<Flight>>
+    ): List<Flight>
 
     @GET("flights/getFlightsByArrivalDepartureAndDepartureTimeArrivalTime")
     suspend fun getFlightsByArrivalDepartureAndDepartureTimeArrivalTime(

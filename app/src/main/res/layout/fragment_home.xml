@@ -28,8 +28,6 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.06" />
 
-   \
-
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="0dp"
@@ -95,13 +93,13 @@
 
             <EditText
                 android:id="@+id/edtFrom"
-                android:background="@drawable/edt_home"
-                android:padding="10dp"
                 android:layout_width="0dp"
-                android:drawableStart="@drawable/flight_takeoff_24"
                 android:layout_height="wrap_content"
+                android:background="@drawable/edt_home"
+                android:drawableStart="@drawable/flight_takeoff_24"
                 android:ems="10"
                 android:inputType="text"
+                android:padding="10dp"
                 app:layout_constraintEnd_toStartOf="@+id/rightGuidelineCard"
                 app:layout_constraintStart_toStartOf="@+id/leftGuidelineCard"
                 app:layout_constraintTop_toBottomOf="@+id/txtFrom" />
@@ -122,14 +120,15 @@
                 android:id="@+id/edtTo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:drawableStart="@drawable/flight_land_24"
-                android:inputType="text"
                 android:background="@drawable/edt_home"
+                android:drawableStart="@drawable/flight_land_24"
+                android:ems="10"
+                android:inputType="text"
                 android:padding="10dp"
                 app:layout_constraintEnd_toStartOf="@+id/rightGuidelineCard"
                 app:layout_constraintStart_toStartOf="@+id/leftGuidelineCard"
                 app:layout_constraintTop_toBottomOf="@+id/txtTo" />
+
             <TextView
                 android:id="@+id/txtDeparture"
                 android:layout_width="wrap_content"
@@ -145,24 +144,25 @@
                 android:id="@+id/edtDeparture"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="text"
                 android:background="@drawable/edt_home"
-                android:padding="10dp"
-                android:focusable="false"
                 android:drawableStart="@drawable/calendar_month_24"
+                android:ems="10"
+                android:focusable="false"
+                android:inputType="text"
+                android:padding="10dp"
                 app:layout_constraintEnd_toStartOf="@+id/rightGuidelineCard"
                 app:layout_constraintStart_toStartOf="@+id/leftGuidelineCard"
                 app:layout_constraintTop_toBottomOf="@+id/txtDeparture" />
+
             <TextView
                 android:id="@+id/txtReturn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
                 android:layout_marginTop="8dp"
                 android:text="@string/txtReturnDate"
                 android:textColor="@color/txtDarkBlue"
                 android:textSize="15sp"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="@+id/leftGuidelineCard"
                 app:layout_constraintTop_toBottomOf="@+id/edtDeparture" />
 
@@ -170,13 +170,13 @@
                 android:id="@+id/edtReturn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:ems="10"
-                android:inputType="text"
                 android:background="@drawable/edt_home"
-                android:padding="10dp"
-                android:focusable="false"
                 android:drawableStart="@drawable/calendar_month_24"
+                android:ems="10"
+                android:focusable="false"
+                android:inputType="text"
+                android:padding="10dp"
+                android:visibility="gone"
                 app:layout_constraintEnd_toStartOf="@+id/rightGuidelineCard"
                 app:layout_constraintStart_toStartOf="@+id/leftGuidelineCard"
                 app:layout_constraintTop_toBottomOf="@+id/txtReturn" />
