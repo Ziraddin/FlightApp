@@ -102,7 +102,7 @@
     </fragment>
     <fragment
         android:id="@+id/bookingDetailsFragment"
-        android:name="com.example.flightapp.ui.fragments.others.BookingDetailsFragment"
+        android:name="com.example.flightapp.ui.fragments.details.booking.BookingDetailsFragment"
         android:label="fragment_booking_details"
         tools:layout="@layout/fragment_booking_details">
         <action
@@ -129,7 +129,7 @@
     </fragment>
     <fragment
         android:id="@+id/contactDetailsFragment"
-        android:name="com.example.flightapp.ui.fragments.others.ContactDetailsFragment"
+        android:name="com.example.flightapp.ui.fragments.details.contact.ContactDetailsFragment"
         android:label="fragment_contact_details"
         tools:layout="@layout/fragment_contact_details" />
     <fragment
@@ -216,7 +216,7 @@
     </fragment>
     <fragment
         android:id="@+id/selectSeatFragment"
-        android:name="com.example.flightapp.ui.fragments.SelectSeatFragment"
+        android:name="com.example.flightapp.ui.fragments.others.SelectSeatFragment"
         android:label="fragment_select_seat"
         tools:layout="@layout/fragment_select_seat" >
         <action
@@ -240,7 +240,7 @@
     </fragment>
     <fragment
         android:id="@+id/paymentDetailsFragment"
-        android:name="com.example.flightapp.ui.fragments.payment.PaymentDetailsFragment"
+        android:name="com.example.flightapp.ui.fragments.details.payment.PaymentDetailsFragment"
         android:label="fragment_payment_details"
         tools:layout="@layout/fragment_payment_details" >
         <action
@@ -258,7 +258,7 @@
     </fragment>
     <fragment
         android:id="@+id/transactionDetailsFragment2"
-        android:name="com.example.flightapp.ui.fragments.transaction.TransactionDetailsFragment"
+        android:name="com.example.flightapp.ui.fragments.details.transaction.TransactionDetailsFragment"
         android:label="fragment_transaction_details"
         tools:layout="@layout/fragment_transaction_details" >
         <action
