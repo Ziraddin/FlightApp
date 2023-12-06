@@ -4,17 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ui.fragments.transaction.TransactionFragment">
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="@color/btn_blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvTransaction"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="80dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
+        app:layout_constraintStart_toStartOf="@+id/leftGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/txtTransaction" />
 
     <TextView
         android:id="@+id/txtTransaction"
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:text="@string/txtTransaction"
         android:textColor="@color/txtDarkBlue"
         android:textSize="30sp"
+        android:visibility="visible"
         app:layout_constraintStart_toStartOf="@+id/leftGuideline"
         app:layout_constraintTop_toTopOf="@+id/topGuideline" />
 
@@ -45,6 +70,7 @@
         android:layout_height="200dp"
         android:layout_marginTop="32dp"
         android:src="@drawable/online_payment"
+        android:visibility="gone"
         app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
         app:layout_constraintStart_toStartOf="@+id/leftGuideline"
         app:layout_constraintTop_toBottomOf="@+id/txtTransaction" />
@@ -53,11 +79,12 @@
         android:id="@+id/txtTransactionHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:textColor="@color/txtDarkBlue"
         android:layout_marginTop="32dp"
         android:text="@string/txtGoSomewhere"
+        android:textColor="@color/txtDarkBlue"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:visibility="gone"
         app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
         app:layout_constraintStart_toStartOf="@+id/leftGuideline"
         app:layout_constraintTop_toBottomOf="@+id/imgTransaction" />
@@ -67,11 +94,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:textColor="@color/txtGray"
-        android:textStyle="bold"
         android:gravity="center"
-        android:textSize="16sp"
         android:text="@string/txtTransactionDescription"
+        android:textColor="@color/txtGray"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:visibility="gone"
         app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
         app:layout_constraintStart_toStartOf="@+id/leftGuideline"
         app:layout_constraintTop_toBottomOf="@+id/txtTransactionHeader" />
@@ -85,6 +113,7 @@
         android:text="@string/btnBook"
         android:textAllCaps="false"
         android:textColor="@color/white"
+        android:visibility="gone"
         app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
         app:layout_constraintStart_toStartOf="@+id/leftGuideline"
         app:layout_constraintTop_toBottomOf="@+id/txtTransactionDescription" />

@@ -11,13 +11,17 @@ import retrofit2.http.Query
 
 interface UserApi {
     @GET("users/getUser")
-    suspend fun getUserById(@Query("id") id: Int): Response<User>
+    suspend fun getUser(
+        @Query("firstname") firstname: String,
+        @Query("lastname") lastname: String,
+        @Query("email") email: String
+    ): User
 
     @POST("users/addUser")
     suspend fun createUser(@Body user: User): User
 
     @PUT("users/updateUser")
-    suspend fun updateUser(@Query("id") id: Int, @Body user: User): Response<User>
+    suspend fun updateUser(@Query("id") id: Int, @Body user: User): User
 
     @DELETE("users/deleteUser")
     suspend fun deleteUser(@Query("id") id: Int): Response<User>

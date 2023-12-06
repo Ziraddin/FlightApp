@@ -57,7 +57,7 @@ class FlightTicketAdapter(private var flight: MutableList<Flight>, val nav: () -
 
                 try {
                     val date = inputFormat.parse(inputDate)
-                    return outputFormat.format(date)
+                    return outputFormat.format(date!!)
                 } catch (e: ParseException) {
                     e.printStackTrace()
                 }

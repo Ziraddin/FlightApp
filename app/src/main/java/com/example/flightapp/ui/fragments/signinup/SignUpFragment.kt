@@ -28,7 +28,6 @@ import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.userProfileChangeRequest
-import kotlinx.coroutines.runBlocking
 
 class SignUpFragment : Fragment() {
     private lateinit var binding: FragmentSignInBinding
@@ -131,13 +130,19 @@ class SignUpFragment : Fragment() {
                         "Signed in as ${user.firstname + " " + user.lastname}",
                         Toast.LENGTH_SHORT
                     ).show()
-                    runBlocking {
-                        userVm.addUser(user)
-                        userFirebase!!.updateProfile(userProfileChangeRequest {
-                            displayName = user.firstname + " " + user.lastname
-                        })
+                    userVm.addUser(user)
+                    userFirebase!!.updateProfile(userProfileChangeRequest {
+                        displayName = user.firstname + " " + user.lastname
+                    })
+                    userVm.userLiveData.observe(viewLifecycleOwner) {
+                        if (it != null) {
+                            onSignInSuccess()
+                        } else {
+                            Toast.makeText(
+                                requireContext(), "Authentication failed", Toast.LENGTH_SHORT
+                            ).show()
+                        }
                     }
-                    onSignInSuccess()
                 } else {
                     Toast.makeText(
                         requireContext(), "Authentication failed", Toast.LENGTH_SHORT
@@ -154,17 +159,24 @@ class SignUpFragment : Fragment() {
                 Toast.makeText(
                     requireContext(), "Signed in as ${user?.displayName}", Toast.LENGTH_SHORT
                 ).show()
-                runBlocking {
-                    userVm.addUser(
-                        User(
-                            firstname = user!!.displayName!!.split(" ")[0],
-                            lastname = user.displayName!!.split(" ")[1],
-                            email = user.email!!,
-                            password = user.uid
-                        )
+
+                userVm.addUser(
+                    User(
+                        firstname = user!!.displayName!!.split(" ")[0],
+                        lastname = user.displayName!!.split(" ")[1],
+                        email = user.email!!,
+                        password = user.uid
                     )
+                )
+                userVm.userLiveData.observe(viewLifecycleOwner) {
+                    if (it != null) {
+                        onSignInSuccess()
+                    } else {
+                        Toast.makeText(
+                            requireContext(), "Authentication failed", Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }
-                onSignInSuccess()
             } else {
                 Toast.makeText(
                     requireContext(),
@@ -190,21 +202,25 @@ class SignUpFragment : Fragment() {
             if (task.isSuccessful) {
                 val user = mAuth.currentUser
                 Toast.makeText(
-                    requireContext(),
-                    "Signed in as ${user!!.displayName}",
-                    Toast.LENGTH_SHORT
+                    requireContext(), "Signed in as ${user!!.displayName}", Toast.LENGTH_SHORT
                 ).show()
-                runBlocking {
-                    userVm.addUser(
-                        User(
-                            firstname = user.displayName!!.split(" ")[0],
-                            lastname = user.displayName!!.split(" ")[1],
-                            email = user.email!!,
-                            password = user.uid
-                        )
+                userVm.addUser(
+                    User(
+                        firstname = user.displayName!!.split(" ")[0],
+                        lastname = user.displayName!!.split(" ")[1],
+                        email = user.email!!,
+                        password = user.uid.toString()
                     )
+                )
+                userVm.userLiveData.observe(viewLifecycleOwner) {
+                    if (it != null) {
+                        onSignInSuccess()
+                    } else {
+                        Toast.makeText(
+                            requireContext(), "Authentication failed", Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }
-                onSignInSuccess()
             } else {
                 Toast.makeText(
                     requireContext(), "Authentication failed", Toast.LENGTH_SHORT

@@ -1,6 +1,5 @@
 package com.example.flightapp.viewmodels
 
-import android.content.Context
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -21,25 +20,17 @@ class UserVm : ViewModel() {
         }
     }
 
-    fun getUser(id: Int, context: Context) {
+    fun getUser(firstname: String, lastname: String, email: String) {
         viewModelScope.launch {
-            val response = userApiCall.getUserById(id)
-            if (response.isSuccessful) {
-                userLiveData.postValue(response.body())
-            } else {
-                Log.d("UserVm", "getUser: ${response.errorBody()}")
-            }
+            val response = userApiCall.getUser(firstname, lastname, email)
+            userLiveData.postValue(response)
         }
     }
 
     fun updateUser(id: Int, user: User) {
         viewModelScope.launch {
             val response = userApiCall.updateUser(id, user)
-            if (response.isSuccessful) {
-                userLiveData.postValue(response.body())
-            } else {
-                Log.d("UserVm", "updateUser: ${response.errorBody()}")
-            }
+            userLiveData.postValue(response)
         }
     }
 

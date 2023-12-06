@@ -22,6 +22,7 @@ class SearchFlights : Fragment() {
     private lateinit var flightVm: FlightVm
     private lateinit var adapter: FlightTicketAdapter
     private var isDataFetched = false
+    private var flightTickets = mutableListOf<Flight>()
 
     override fun onStart() {
         super.onStart()
@@ -60,7 +61,7 @@ class SearchFlights : Fragment() {
                     searchedDestinationTo!!, searchedDestinationFrom!!, departureDate!!
                 )
                 flightVm.getFlightsByArrivalDepartureAndDepartureTime(
-                    searchedDestinationFrom, searchedDestinationTo, returnDate!!
+                    searchedDestinationFrom, searchedDestinationTo, returnDate
                 )
             } else {
                 flightVm.getFlightsByArrivalDepartureAndDepartureTime(
@@ -69,7 +70,7 @@ class SearchFlights : Fragment() {
             }
 
             flightVm.flightLiveData.observe(viewLifecycleOwner, Observer {
-                val flightTickets = it as MutableList<Flight>
+                flightTickets = it as MutableList<Flight>
                 Log.d("FlightVm", "setAdapter: $flightTickets")
 
                 if (flightTickets.isNotEmpty()) {
@@ -81,6 +82,8 @@ class SearchFlights : Fragment() {
                 }
             })
             isDataFetched = true
+        } else {
+            adapter.updateData(flightTickets)
         }
     }
 
