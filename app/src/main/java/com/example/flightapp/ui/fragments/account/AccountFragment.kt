@@ -36,6 +36,7 @@ class AccountFragment : Fragment() {
         binding.txtNumber.text = mAuth.currentUser?.phoneNumber ?: "xxx xxx xx xx"
     }
 
+
     private fun logout() {
         binding.imgLogOut.setOnClickListener {
             mAuth.signOut()

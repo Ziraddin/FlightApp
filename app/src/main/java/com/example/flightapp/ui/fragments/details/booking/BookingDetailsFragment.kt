@@ -12,18 +12,21 @@ import androidx.navigation.fragment.findNavController
 import com.example.flightapp.R
 import com.example.flightapp.databinding.FragmentBookingDetailsBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.firebase.auth.FirebaseAuth
 
 class BookingDetailsFragment : Fragment() {
     private lateinit var binding: FragmentBookingDetailsBinding
+    private lateinit var mAuth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentBookingDetailsBinding.inflate(inflater)
-
+        mAuth = FirebaseAuth.getInstance()
         setBaggageBottomSheet()
         setNavigation()
+        setLayoutValue()
 
         return binding.root
     }
@@ -127,5 +130,11 @@ class BookingDetailsFragment : Fragment() {
             }
         }
 
+    }
+
+    private fun setLayoutValue(){
+        binding.txtContactName.text = mAuth.currentUser?.displayName?:"N/A"
+        binding.txtContactEmail.text = mAuth.currentUser?.email ?: "N/A"
+        binding.txtContactNumber.text = mAuth.currentUser?.phoneNumber ?: "xxx xxx xx xx"
     }
 }
