@@ -1,13 +1,12 @@
 package com.example.flightapp.model
 
-import java.util.Date
+import java.io.Serializable
 
 data class Transaction(
     val id: Int,
-    var date: Date? = null,
-    var flightNumber: String? = null,
+    var date: String? = null,
     var baggage: String? = null,
     var seatNumber: String? = null,
     val user: User,
     val flight: Flight,
-)
+) : Serializable

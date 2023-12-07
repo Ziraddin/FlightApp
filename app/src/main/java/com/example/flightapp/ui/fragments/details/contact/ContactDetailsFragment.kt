@@ -1,4 +1,4 @@
-package com.example.flightapp.ui.fragments.others
+package com.example.flightapp.ui.fragments.details.contact
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

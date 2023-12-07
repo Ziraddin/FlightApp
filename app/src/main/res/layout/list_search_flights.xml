@@ -1,169 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/btn_blue">
+    android:background="@android:color/transparent"
+    android:gravity="center_horizontal"
+    android:orientation="horizontal">
 
-    <ImageView
-        android:id="@+id/imgContainer"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/subtract" />
+        android:layout_marginBottom="24dp">
 
-    <TextView
-        android:id="@+id/txtFrom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="TextView"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imgContainer" />
+        <ImageView
+            android:id="@+id/imgContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/subtract" />
 
-    <TextView
-        android:id="@+id/txtTo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="TextView"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/imgContainer"
-        app:layout_constraintTop_toTopOf="@+id/imgContainer" />
+        <TextView
+            android:id="@+id/txtFrom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="TextView"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imgContainer" />
 
-    <TextView
-        android:id="@+id/txtDirectionFrom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="TextView"
-        android:textColor="@color/txtGray"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/txtFrom"
-        app:layout_constraintTop_toBottomOf="@+id/txtFrom" />
+        <TextView
+            android:id="@+id/txtTo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="TextView"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/imgContainer"
+            app:layout_constraintTop_toTopOf="@+id/imgContainer" />
 
-    <TextView
-        android:id="@+id/txtDirectionTo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="TextView"
-        android:textColor="@color/txtGray"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/txtTo"
-        app:layout_constraintTop_toBottomOf="@+id/txtTo" />
+        <TextView
+            android:id="@+id/txtDirectionFrom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="TextView"
+            android:textColor="@color/txtGray"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/txtFrom"
+            app:layout_constraintTop_toBottomOf="@+id/txtFrom" />
 
-    <TextView
-        android:id="@+id/txtFromHour"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="TextView"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/txtFrom"
-        app:layout_constraintTop_toBottomOf="@+id/txtDirectionFrom" />
+        <TextView
+            android:id="@+id/txtDirectionTo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="TextView"
+            android:textColor="@color/txtGray"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/txtTo"
+            app:layout_constraintTop_toBottomOf="@+id/txtTo" />
 
-    <TextView
-        android:id="@+id/txtToHour"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="TextView"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/txtTo"
-        app:layout_constraintTop_toBottomOf="@+id/txtDirectionTo" />
+        <TextView
+            android:id="@+id/txtFromHour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="TextView"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/txtFrom"
+            app:layout_constraintTop_toBottomOf="@+id/txtDirectionFrom" />
 
-    <TextView
-        android:id="@+id/txtFromDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textColor="@color/txtGray"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/txtFrom"
-        app:layout_constraintTop_toBottomOf="@+id/txtFromHour" />
+        <TextView
+            android:id="@+id/txtToHour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="TextView"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/txtTo"
+            app:layout_constraintTop_toBottomOf="@+id/txtDirectionTo" />
 
-    <TextView
-        android:id="@+id/txtToDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textColor="@color/txtGray"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/txtTo"
-        app:layout_constraintTop_toBottomOf="@+id/txtToHour" />
+        <TextView
+            android:id="@+id/txtFromDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="@color/txtGray"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/txtFrom"
+            app:layout_constraintTop_toBottomOf="@+id/txtFromHour" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imgCompany"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginBottom="16dp"
-        android:src="@drawable/person_24"
-        app:layout_constraintBottom_toBottomOf="@+id/imgContainer"
-        app:layout_constraintStart_toStartOf="@+id/txtFromDate" />
+        <TextView
+            android:id="@+id/txtToDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="@color/txtGray"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/txtTo"
+            app:layout_constraintTop_toBottomOf="@+id/txtToHour" />
 
-    <TextView
-        android:id="@+id/txtCompanyName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:text="TextView"
-        android:textColor="@color/txtGray"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imgCompany"
-        app:layout_constraintStart_toEndOf="@+id/imgCompany"
-        app:layout_constraintTop_toTopOf="@+id/imgCompany" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgCompany"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/person_24"
+            app:layout_constraintBottom_toBottomOf="@+id/imgContainer"
+            app:layout_constraintStart_toStartOf="@+id/txtFromDate" />
 
-    <TextView
-        android:id="@+id/txtPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="TextView"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/txtCompanyName"
-        app:layout_constraintEnd_toEndOf="@+id/imgContainer"
-        app:layout_constraintTop_toTopOf="@+id/txtCompanyName" />
+        <TextView
+            android:id="@+id/txtCompanyName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="TextView"
+            android:textColor="@color/txtGray"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imgCompany"
+            app:layout_constraintStart_toEndOf="@+id/imgCompany"
+            app:layout_constraintTop_toTopOf="@+id/imgCompany" />
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@+id/txtTo"
-        app:layout_constraintStart_toEndOf="@+id/txtFrom"
-        app:layout_constraintTop_toTopOf="@+id/txtTo"
-        app:srcCompat="@drawable/vector__5_" />
+        <TextView
+            android:id="@+id/txtPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="TextView"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/txtCompanyName"
+            app:layout_constraintEnd_toEndOf="@+id/imgContainer"
+            app:layout_constraintTop_toTopOf="@+id/txtCompanyName" />
 
-    <TextView
-        android:id="@+id/txtDuration"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:text="TextView"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="@+id/txtDirectionFrom"
-        app:layout_constraintEnd_toStartOf="@+id/txtDirectionTo"
-        app:layout_constraintStart_toEndOf="@+id/txtDirectionFrom" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/flight_trip_icon"
+            app:layout_constraintEnd_toStartOf="@+id/txtTo"
+            app:layout_constraintStart_toEndOf="@+id/txtFrom"
+            app:layout_constraintTop_toTopOf="@+id/txtTo" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="$"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/txtPrice"
-        app:layout_constraintEnd_toStartOf="@+id/txtPrice"
-        app:layout_constraintTop_toTopOf="@+id/txtPrice" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/txtDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/txtDirectionFrom"
+            app:layout_constraintEnd_toStartOf="@+id/txtTo"
+            app:layout_constraintStart_toEndOf="@+id/txtFrom" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/txtPrice"
+            app:layout_constraintEnd_toStartOf="@+id/txtPrice"
+            app:layout_constraintTop_toTopOf="@+id/txtPrice" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

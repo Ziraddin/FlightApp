@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.payment.PaymentDetailsFragment">
+    tools:context=".ui.fragments.details.payment.PaymentDetailsFragment">
 
 
     <TextView
@@ -53,8 +53,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:textColor="@color/txtGray"
         android:text="@string/txtPaymentSubHeader"
+        android:textColor="@color/txtGray"
         app:layout_constraintStart_toStartOf="@+id/leftGuideline"
         app:layout_constraintTop_toBottomOf="@+id/txtHeader" />
 
@@ -67,19 +67,16 @@
         app:layout_constraintTop_toBottomOf="@+id/txtSubHeader">
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/MasterCard"
             android:layout_width="wrap_content"
-            android:checked="true"
-            android:layout_height="wrap_content"
-             />
+            android:layout_height="wrap_content" />
 
 
         <RadioButton
-            android:id="@+id/radioButton"
+            android:id="@+id/PayPal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-             />
+            android:layout_marginTop="20dp" />
     </RadioGroup>
 
     <ImageView
@@ -96,9 +93,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="@string/txtHidden"
-        android:textStyle="bold"
         android:textColor="@color/txtDarkBlue"
         android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageView17"
         app:layout_constraintStart_toEndOf="@+id/imageView17"
         app:layout_constraintTop_toTopOf="@+id/imageView17" />
@@ -107,9 +104,9 @@
         android:id="@+id/textView36"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:textColor="@color/txtDarkBlue"
         android:text="8976"
+        android:textColor="@color/txtDarkBlue"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/textView35"
         app:layout_constraintStart_toEndOf="@+id/textView35"
@@ -130,8 +127,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="PayPal"
-        android:textSize="20sp"
         android:textColor="@color/txtDarkBlue"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageView19"
         app:layout_constraintStart_toEndOf="@+id/imageView17"
@@ -143,8 +140,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:text="@string/txtSubtotal"
-        android:textSize="18sp"
         android:textColor="@color/txtGray"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/leftGuideline"
         app:layout_constraintTop_toBottomOf="@+id/textView37"
@@ -154,11 +151,11 @@
         android:id="@+id/textView39"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="$"
-        android:textSize="32sp"
-        android:textColor="@color/txtDarkBlue"
-        android:textStyle="bold"
         android:layout_marginTop="10dp"
+        android:text="$"
+        android:textColor="@color/txtDarkBlue"
+        android:textSize="32sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/textView38"
         app:layout_constraintTop_toBottomOf="@+id/textView38" />
 
@@ -167,8 +164,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
-        android:textSize="32sp"
         android:textColor="@color/txtDarkBlue"
+        android:textSize="32sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/textView39"
         app:layout_constraintStart_toEndOf="@+id/textView39"
@@ -177,14 +174,15 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnProceed"
         android:layout_width="0dp"
-        app:layout_constraintWidth_percent="0.6"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_next"
-        android:textColor="@color/white"
+        android:enabled="false"
         android:text="@string/btnProceed"
         android:textAllCaps="false"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/textView39"
         app:layout_constraintEnd_toStartOf="@+id/rightGuideline"
-        app:layout_constraintTop_toTopOf="@+id/textView38" />
+        app:layout_constraintTop_toTopOf="@+id/textView38"
+        app:layout_constraintWidth_percent="0.6" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

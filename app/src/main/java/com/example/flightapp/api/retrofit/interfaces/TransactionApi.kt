@@ -1,8 +1,6 @@
 package com.example.flightapp.api.retrofit.interfaces
 
-import com.example.flightapp.api.constants.Constants.transactions
 import com.example.flightapp.model.Transaction
-import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
@@ -11,15 +9,15 @@ import retrofit2.http.PUT
 import retrofit2.http.Query
 
 interface TransactionApi {
-    @GET("${transactions}/getTransactionsByUserId/")
-    fun getTransactionsByUserId(@Query("userid") userid: Int): Call<Transaction>
+    @GET("transactions/getTransactionsByUserId")
+    suspend fun getTransactionsByUserId(@Query("userid") userid: Int): List<Transaction?>?
 
-    @POST("${transactions}/addTransaction")
-    fun createTransaction(@Body transaction: Transaction): Call<Transaction>
+    @POST("transactions/addTransaction")
+    suspend fun createTransaction(@Body transaction: Transaction): Transaction
 
-    @PUT("${transactions}/updateTransaction/")
-    fun updateTransaction(@Query("id") id: Int, @Body transaction: Transaction): Call<Transaction>
+    @PUT("transactions/updateTransaction")
+    suspend fun updateTransaction(@Query("id") id: Int, @Body transaction: Transaction): Transaction
 
-    @DELETE("${transactions}/deleteTransaction")
-    fun deleteTransaction(@Query("id") id: Int): Call<Transaction>
+    @DELETE("transactions/deleteTransaction")
+    suspend fun deleteTransaction(@Query("id") id: Int): Transaction
 }

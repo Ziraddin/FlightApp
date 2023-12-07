@@ -53,10 +53,12 @@
         android:label="SignUpFragment"
         tools:layout="@layout/fragment_sign_in">
         <action
-            android:id="@+id/action_signUpFragment_to_emailVerificationFragment"
-            app:destination="@id/emailVerificationFragment"
-            app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/slide_out_right"
+            android:id="@+id/action_signUpFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
             app:popUpTo="@id/signInFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -102,7 +104,7 @@
     </fragment>
     <fragment
         android:id="@+id/bookingDetailsFragment"
-        android:name="com.example.flightapp.ui.fragments.others.BookingDetailsFragment"
+        android:name="com.example.flightapp.ui.fragments.details.booking.BookingDetailsFragment"
         android:label="fragment_booking_details"
         tools:layout="@layout/fragment_booking_details">
         <action
@@ -129,7 +131,7 @@
     </fragment>
     <fragment
         android:id="@+id/contactDetailsFragment"
-        android:name="com.example.flightapp.ui.fragments.others.ContactDetailsFragment"
+        android:name="com.example.flightapp.ui.fragments.details.contact.ContactDetailsFragment"
         android:label="fragment_contact_details"
         tools:layout="@layout/fragment_contact_details" />
     <fragment
@@ -202,7 +204,17 @@
         android:id="@+id/deleteAccountFragment"
         android:name="com.example.flightapp.ui.fragments.settings.DeleteAccountFragment"
         android:label="fragment_delete_account"
-        tools:layout="@layout/fragment_delete_account" />
+        tools:layout="@layout/fragment_delete_account" >
+        <action
+            android:id="@+id/action_deleteAccountFragment_to_viewPagerFragment"
+            app:destination="@id/viewPagerFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/transactionFragment"
         android:name="com.example.flightapp.ui.fragments.transaction.TransactionFragment"
@@ -213,10 +225,17 @@
             app:destination="@id/homeFragment"
             app:enterAnim="@anim/nav_default_enter_anim"
             app:exitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/action_transactionFragment_to_transactionDetailsFragment2"
+            app:destination="@id/transactionDetailsFragment2"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popEnterAnim="@android:anim/slide_in_left"
+            app:popExitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/selectSeatFragment"
-        android:name="com.example.flightapp.ui.fragments.SelectSeatFragment"
+        android:name="com.example.flightapp.ui.fragments.others.SelectSeatFragment"
         android:label="fragment_select_seat"
         tools:layout="@layout/fragment_select_seat" >
         <action
@@ -224,23 +243,8 @@
             app:destination="@id/paymentDetailsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/emailVerificationFragment"
-        android:name="com.example.flightapp.ui.fragments.signinup.EmailVerificationFragment"
-        android:label="fragment_email_verification"
-        tools:layout="@layout/fragment_email_verification" >
-        <action
-            android:id="@+id/action_emailVerificationFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
-            app:enterAnim="@android:anim/slide_in_left"
-            app:exitAnim="@android:anim/slide_out_right"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim"
-            app:popUpTo="@id/emailVerificationFragment"
-            app:popUpToInclusive="true" />
-    </fragment>
-    <fragment
         android:id="@+id/paymentDetailsFragment"
-        android:name="com.example.flightapp.ui.fragments.payment.PaymentDetailsFragment"
+        android:name="com.example.flightapp.ui.fragments.details.payment.PaymentDetailsFragment"
         android:label="fragment_payment_details"
         tools:layout="@layout/fragment_payment_details" >
         <action
@@ -258,7 +262,7 @@
     </fragment>
     <fragment
         android:id="@+id/transactionDetailsFragment2"
-        android:name="com.example.flightapp.ui.fragments.transaction.TransactionDetailsFragment"
+        android:name="com.example.flightapp.ui.fragments.details.transaction.TransactionDetailsFragment"
         android:label="fragment_transaction_details"
         tools:layout="@layout/fragment_transaction_details" >
         <action

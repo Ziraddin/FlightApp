@@ -75,7 +75,7 @@
     <string name="txtOther">Other</string>
     <string name="txtSure">You sure want to delete your account?</string>
     <string name="txtDeletionAccept">I understand and I accept the deletion of my account</string>
-    <string name="txtTransaction">Transaction</string>
+    <string name="txtTransaction">Transactions</string>
     <string name="txtGoSomewhere">Let’s go somewhere</string>
     <string name="txtTransactionDescription">After book a trip you can manage orders and see E-ticket here.</string>
     <string name="btnBook">Book a trip</string>
@@ -101,5 +101,6 @@
     <string name="fb_login_protocol_scheme">fb1234</string>
     <string name="facebook_client_token">437bef2de635e963d27131849e4acb39</string>
     <string name="verifying_your_email">Verifying Your Email</string>
+    <string name="no_flights_were_found">No flights were found</string>
 
 </resources>
