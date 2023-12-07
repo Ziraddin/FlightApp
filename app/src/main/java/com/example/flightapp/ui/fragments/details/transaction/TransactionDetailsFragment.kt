@@ -22,6 +22,7 @@ class TransactionDetailsFragment : Fragment() {
         activity.setBottomNavigation(false)
     }
 
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -45,7 +46,6 @@ class TransactionDetailsFragment : Fragment() {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     private fun setLayoutValue() {
         val transaction = arguments?.getSerializable("transaction") as? Transaction
 
