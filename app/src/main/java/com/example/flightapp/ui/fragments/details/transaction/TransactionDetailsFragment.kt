@@ -54,16 +54,18 @@ class TransactionDetailsFragment : Fragment() {
             val flight = it.flight
 
             with(binding) {
-                txtContactName.text = "${user?.firstname} ${user?.lastname}"
-                txtCompanyName.text = flight?.company
-                txtUserName.text = "${user?.firstname} ${user?.lastname}"
-                txtPrice1.text = (flight?.price ?: 0).toString()
-                txtPrice2.text = (flight?.price ?: 0).toString()
-                txtTakeOffTime.text = flight?.departureTime
-                txtLandTime.text = flight?.arrivalTime
+                binding.txtWhereFrom.text = flight.departure?.slice(0..2)
+                binding.txtWhereTo.text = flight.arrival?.slice(0..2)
+                txtContactName.text = "${user.firstname} ${user.lastname}"
+                txtCompanyName.text = flight.company
+                txtUserName.text = "${user.firstname} ${user.lastname}"
+                txtPrice1.text = (flight.price ?: 0).toString()
+                txtPrice2.text = (flight.price ?: 0).toString()
+                txtTakeOffTime.text = flight.departureTime?.slice(11..15)
+                txtLandTime.text = flight.arrivalTime?.slice(11..15)
                 txtTransactionDate.text = it.date
                 txtInvoice.text = it.id.toString()
-                txtPaymentMethod.text = user?.payment.toString()
+                txtPaymentMethod.text = user.payment?.paymentType.toString()
             }
         }
     }
