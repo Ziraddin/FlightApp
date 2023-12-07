@@ -46,20 +46,27 @@ class TransactionDetailsFragment : Fragment() {
     }
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
-    private fun setLayoutValue(){
-        arguments?.let {
-            val transaction = it.getSerializable("transaction", Transaction::class.java)
-            binding.txtContactName.text = transaction?.user?.firstname + " " + transaction?.user?.lastname
-            binding.txtCompanyName.text = transaction?.flight?.company
-            binding.txtUserName.text = transaction?.user?.firstname + " " + transaction?.user?.lastname
-            binding.txtPrice1.text = (transaction?.flight?.price).toString()
-            binding.txtPrice2.text = (transaction?.flight?.price).toString()
-            binding.txtTakeOffTime.text = transaction?.flight?.arrivalTime
-            binding.txtLandTime.text = transaction?.flight?.arrivalTime
-            binding.txtTransactionDate.text = transaction?.date
-            binding.txtInvoice.text = transaction?.id.toString()
-            binding.txtPaymentMethod.text = transaction?.user?.payment.toString()
+    private fun setLayoutValue() {
+        val transaction = arguments?.getSerializable("transaction") as? Transaction
+
+        transaction?.let {
+            val user = it.user
+            val flight = it.flight
+
+            with(binding) {
+                txtContactName.text = "${user?.firstname} ${user?.lastname}"
+                txtCompanyName.text = flight?.company
+                txtUserName.text = "${user?.firstname} ${user?.lastname}"
+                txtPrice1.text = (flight?.price ?: 0).toString()
+                txtPrice2.text = (flight?.price ?: 0).toString()
+                txtTakeOffTime.text = flight?.departureTime
+                txtLandTime.text = flight?.arrivalTime
+                txtTransactionDate.text = it.date
+                txtInvoice.text = it.id.toString()
+                txtPaymentMethod.text = user?.payment.toString()
+            }
         }
     }
+
 
 }
