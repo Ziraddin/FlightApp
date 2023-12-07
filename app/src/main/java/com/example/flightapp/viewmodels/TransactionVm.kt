@@ -7,8 +7,9 @@ import androidx.lifecycle.viewModelScope
 import com.example.flightapp.api.retrofit.instances.RetrofitClient
 import com.example.flightapp.model.Transaction
 import kotlinx.coroutines.launch
+import java.io.Serializable
 
-class TransactionVm : ViewModel() {
+class TransactionVm : ViewModel(){
 
     var transactionsLiveData = MutableLiveData<List<Transaction?>?>()
     private val transactionApi = RetrofitClient.transactionApi

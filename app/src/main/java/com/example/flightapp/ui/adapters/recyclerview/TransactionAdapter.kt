@@ -1,12 +1,13 @@
 package com.example.flightapp.ui.adapters.recyclerview
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.flightapp.databinding.ItemTransactionBinding
 import com.example.flightapp.model.Transaction
 
-class TransactionAdapter(private var transactions: MutableList<Transaction>, val nav: () -> Unit) :
+class TransactionAdapter(private var transactions: MutableList<Transaction>, val nav: (Bundle) -> Unit) :
     RecyclerView.Adapter<TransactionAdapter.TransactionViewHolder>() {
 
     fun updateData(newTransactions: MutableList<Transaction>) {
@@ -38,7 +39,9 @@ class TransactionAdapter(private var transactions: MutableList<Transaction>, val
                 tvTransactionAmount.text =
                     "Amount : ".plus(transactionItem.flight.price.toString()).plus(" $")
                 btnTransactionDetails.setOnClickListener {
-                    nav.invoke()
+                    val bundle = Bundle()
+                    bundle.putSerializable("transaction",transactionItem)
+                    nav.invoke(bundle)
                 }
             }
         }

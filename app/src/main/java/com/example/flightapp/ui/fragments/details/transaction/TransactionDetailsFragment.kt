@@ -1,13 +1,16 @@
 package com.example.flightapp.ui.fragments.details.transaction
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.flightapp.R
 import com.example.flightapp.databinding.FragmentTransactionDetailsBinding
+import com.example.flightapp.model.Transaction
 import com.example.flightapp.ui.activities.MainActivity
 
 class TransactionDetailsFragment : Fragment() {
@@ -25,6 +28,7 @@ class TransactionDetailsFragment : Fragment() {
     ): View {
         binding = FragmentTransactionDetailsBinding.inflate(inflater)
         setNavigation()
+        setLayoutValue()
         return binding.root
     }
 
@@ -38,6 +42,23 @@ class TransactionDetailsFragment : Fragment() {
             findNavController().navigate(R.id.action_transactionDetailsFragment2_to_homeFragment)
 
 
+        }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    private fun setLayoutValue(){
+        arguments?.let {
+            val transaction = it.getSerializable("transaction", Transaction::class.java)
+            binding.txtContactName.text = transaction?.user?.firstname + " " + transaction?.user?.lastname
+            binding.txtCompanyName.text = transaction?.flight?.company
+            binding.txtUserName.text = transaction?.user?.firstname + " " + transaction?.user?.lastname
+            binding.txtPrice1.text = (transaction?.flight?.price).toString()
+            binding.txtPrice2.text = (transaction?.flight?.price).toString()
+            binding.txtTakeOffTime.text = transaction?.flight?.arrivalTime
+            binding.txtLandTime.text = transaction?.flight?.arrivalTime
+            binding.txtTransactionDate.text = transaction?.date
+            binding.txtInvoice.text = transaction?.id.toString()
+            binding.txtPaymentMethod.text = transaction?.user?.payment.toString()
         }
     }
 
