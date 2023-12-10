@@ -7,11 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.flightapp.R
+import com.example.flightapp.api.constants.Constants
 import com.example.flightapp.databinding.FragmentSelectSeatBinding
 import com.example.flightapp.model.Flight
 import com.example.flightapp.model.Transaction
@@ -20,6 +23,7 @@ import com.example.flightapp.ui.adapters.recyclerview.SeatAdapters
 import com.example.flightapp.ui.adapters.recyclerview.Seats
 import com.example.flightapp.ui.adapters.recyclerview.SelectedSeatAdapter
 import com.example.flightapp.ui.fragments.details.booking.BookingDetailsFragment
+import com.example.flightapp.viewmodels.UserVm
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
@@ -28,7 +32,9 @@ class SelectSeatFragment : Fragment() {
     private var adapterSelected: SelectedSeatAdapter? = null
     private var adapter: SeatAdapters? = null
     private var adapterRight: SeatAdapters? = null
-    private var seatNo : String? = null
+    private var seatNo: String? = null
+    private lateinit var userVm: UserVm
+    private lateinit var user: User
 
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -52,8 +58,29 @@ class SelectSeatFragment : Fragment() {
             val flight = arguments?.getSerializable("flight") as? Flight
             val currentDate = getCurrentDate()
             val baggage = BookingDetailsFragment.baggage.toString()
-            val transaction = Transaction(0,currentDate,baggage,seatNo,flight,User())
-            findNavController().navigate(R.id.action_selectSeatFragment_to_paymentDetailsFragment)
+            userVm = ViewModelProvider(this)[UserVm::class.java]
+            userVm.getUser(
+                Constants.cUser.firstname!!,
+                Constants.cUser.lastname!!,
+                Constants.cUser.email!!
+            )
+            userVm.userLiveData.observe(viewLifecycleOwner, Observer {
+                user = it
+            })
+            val transaction = Transaction(
+                0,
+                date = currentDate,
+                baggage = baggage,
+                seatNumber = seatNo,
+                flight = flight!!,
+                user = user
+            )
+            val bundle = Bundle()
+            bundle.putSerializable("transaction", transaction)
+            findNavController().navigate(
+                R.id.action_selectSeatFragment_to_paymentDetailsFragment,
+                bundle
+            )
         }
     }
 
@@ -63,6 +90,7 @@ class SelectSeatFragment : Fragment() {
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
         return currentDate.format(formatter)
     }
+
     private fun setAdapter() {
         val listOfSeats = mutableListOf(
             Seats(R.drawable.seat_available, "A1"),
@@ -100,22 +128,24 @@ class SelectSeatFragment : Fragment() {
 
         val selectedSeats = ArrayList<Seats>()
 
-        adapterSelected = SelectedSeatAdapter(selectedSeats )
+        adapterSelected = SelectedSeatAdapter(selectedSeats)
         binding.recyclerView3.layoutManager = GridLayoutManager(requireContext(), 4)
         binding.recyclerView3.adapter = adapterSelected
         adapter?.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
             override fun onChanged() {
                 val selectedSeats = adapter?.getSelectedSeats()
-                seatNo = selectedSeats!![selectedSeats.size-1].seatNumber
+
                 adapterSelected?.updateSelectedSeats(selectedSeats ?: emptyList())
+                seatNo = selectedSeats!!.last().seatNumber
             }
         })
 
-        adapterRight?.registerAdapterDataObserver(object :RecyclerView.AdapterDataObserver(){
+        adapterRight?.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
             override fun onChanged() {
                 val selectedSeats = adapterRight?.getSelectedSeats()
-                seatNo = selectedSeats!![selectedSeats.size-1].seatNumber
-                adapterSelected?.updateSelectedSeats(selectedSeats?: emptyList())
+
+                adapterSelected?.updateSelectedSeats(selectedSeats ?: emptyList())
+
             }
         })
     }

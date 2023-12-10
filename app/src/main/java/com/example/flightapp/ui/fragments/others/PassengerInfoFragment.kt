@@ -9,9 +9,11 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.flightapp.R
 import com.example.flightapp.databinding.FragmentContactDetailsBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class PassengerInfoFragment : Fragment() {
     private lateinit var binding: FragmentContactDetailsBinding
+    private lateinit var mAuth: FirebaseAuth
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -20,8 +22,9 @@ class PassengerInfoFragment : Fragment() {
         binding.arrowBack2.setOnClickListener{
             findNavController().popBackStack()
         }
-
+        mAuth = FirebaseAuth.getInstance()
         adaptLayout()
+        setLayoutValue()
         return binding.root
     }
 
@@ -29,5 +32,11 @@ class PassengerInfoFragment : Fragment() {
         binding.txtHeader.setText(R.string.txtPassengerInfo)
         binding.cardView3.visibility = View.GONE
         binding.txtFooterInfo.setText(R.string.txtFooterPersonInfo)
+    }
+
+    private fun setLayoutValue(){
+        binding.txtUsername.text = mAuth.currentUser?.displayName?:"N/A"
+        binding.txtEmailAddress.text = mAuth.currentUser?.email ?: "N/A"
+        binding.txtPhoneNumber.text = mAuth.currentUser?.phoneNumber ?: "xxx xxx xx xx"
     }
 }

@@ -78,9 +78,6 @@ class TransactionFragment : Fragment() {
 
 
     private fun setRecyclerView() {
-        val transaction = mutableListOf<Transaction>().map {
-
-        }
         adapter = TransactionAdapter(mutableListOf()) {
             findNavController().navigate(R.id.action_transactionFragment_to_transactionDetailsFragment2,it)
         }

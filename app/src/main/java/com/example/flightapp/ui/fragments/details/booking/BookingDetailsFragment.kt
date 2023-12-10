@@ -25,7 +25,7 @@ class BookingDetailsFragment : Fragment() {
 
 
     companion object{
-        var baggage: Int? = null
+        var baggage: Int = 0
     }
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
@@ -57,7 +57,7 @@ class BookingDetailsFragment : Fragment() {
 
         binding.btnSelect.setOnClickListener {
             val bundle = Bundle()
-            flight?.price = flight?.price?.plus(baggage ?: 0)
+            flight?.price = flight?.price?.plus(baggage)
             bundle.putSerializable("flight", flight)
             findNavController().navigate(
                 R.id.action_bookingDetailsFragment_to_selectSeatFragment,
@@ -80,7 +80,7 @@ class BookingDetailsFragment : Fragment() {
             val txtPrice: TextView = view.findViewById(R.id.txtPrice1)
             val txtPrice2: TextView = view.findViewById(R.id.txtPrice2)
             val btnAdd: Button = view.findViewById(R.id.btnAdd)
-            val txtBaggage: TextView = view.findViewById(R.id.txtAddBaggage)
+
 
             val cardToTextMap = mapOf(
                 cardView1 to listOf(R.id.txtBaggageWeight, R.id.txtBaggagePrice),
@@ -132,7 +132,7 @@ class BookingDetailsFragment : Fragment() {
                         txtPrice2.text = "$0"
                         textViews.forEachIndexed { index, textViewId ->
                             val textView = cardView.findViewById<TextView>(textViewId)
-                            if (index == 0) {
+                            if (index == 0 ) {
                                 textView?.setTextColor(colorDarkBlue)
                             } else {
                                 textView?.setTextColor(colorGray)
@@ -142,8 +142,9 @@ class BookingDetailsFragment : Fragment() {
                     }
 
                     btnAdd.setOnClickListener {
-                        txtBaggage.text =
+                        binding.txtBaggage.text =
                             (baggage.toString() + "Kg") ?: getString(R.string.txtAddBaggage)
+                        dialog.hide()
                     }
 
 

@@ -30,7 +30,7 @@ class ContactDetailsFragment : Fragment() {
 
 
     private fun setLayoutValue(){
-        binding.txtFullName.text = mAuth.currentUser?.displayName?:"N/A"
+        binding.txtUsername.text = mAuth.currentUser?.displayName?:"N/A"
         binding.txtEmailAddress.text = mAuth.currentUser?.email ?: "N/A"
         binding.txtPhoneNumber.text = mAuth.currentUser?.phoneNumber ?: "xxx xxx xx xx"
     }
