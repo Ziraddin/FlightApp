@@ -24,6 +24,7 @@ import com.example.flightapp.ui.adapters.recyclerview.Seats
 import com.example.flightapp.ui.adapters.recyclerview.SelectedSeatAdapter
 import com.example.flightapp.ui.fragments.details.booking.BookingDetailsFragment
 import com.example.flightapp.viewmodels.UserVm
+import com.google.android.material.snackbar.Snackbar
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
@@ -77,10 +78,14 @@ class SelectSeatFragment : Fragment() {
             )
             val bundle = Bundle()
             bundle.putSerializable("transaction", transaction)
-            findNavController().navigate(
-                R.id.action_selectSeatFragment_to_paymentDetailsFragment,
-                bundle
-            )
+            if(seatNo!=null){
+                findNavController().navigate(
+                    R.id.action_selectSeatFragment_to_paymentDetailsFragment,
+                    bundle
+                )
+            }else{
+                Snackbar.make(requireView(),"Please select a seat" , Snackbar.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -136,7 +141,12 @@ class SelectSeatFragment : Fragment() {
                 val selectedSeats = adapter?.getSelectedSeats()
 
                 adapterSelected?.updateSelectedSeats(selectedSeats ?: emptyList())
-                seatNo = selectedSeats!!.last().seatNumber
+
+                if(selectedSeats!!.isNotEmpty()){
+                    val seats = selectedSeats ?: emptyList()
+                    seatNo = seats.last().seatNumber
+                }
+
             }
         })
 
@@ -145,7 +155,10 @@ class SelectSeatFragment : Fragment() {
                 val selectedSeats = adapterRight?.getSelectedSeats()
 
                 adapterSelected?.updateSelectedSeats(selectedSeats ?: emptyList())
-
+                if(selectedSeats!!.isNotEmpty()){
+                    val seats = selectedSeats ?: emptyList()
+                    seatNo = seats.last().seatNumber
+                }
             }
         })
     }
