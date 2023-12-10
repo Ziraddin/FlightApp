@@ -31,7 +31,7 @@ class SelectedSeatAdapter(private var listSeats: List<Seats>) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(seat: Seats) {
-           binding.txtSeatNumber.text = "1"
+           binding.txtSeatNumber.text = seat.seatNumber
            binding.txtOrderTicker.text = "5A"
 
         }

@@ -1,23 +1,34 @@
 package com.example.flightapp.ui.fragments.details.booking
 
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
+import androidx.annotation.RequiresApi
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import com.example.flightapp.R
 import com.example.flightapp.databinding.FragmentBookingDetailsBinding
+import com.example.flightapp.model.Flight
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.auth.FirebaseAuth
 
 class BookingDetailsFragment : Fragment() {
     private lateinit var binding: FragmentBookingDetailsBinding
     private lateinit var mAuth: FirebaseAuth
+    private var flight: Flight? = null
 
+
+    companion object{
+        var baggage: Int? = null
+    }
+
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,7 +43,7 @@ class BookingDetailsFragment : Fragment() {
     }
 
 
-    private fun setNavigation(){
+    private fun setNavigation() {
         binding.txtEdit.setOnClickListener {
             findNavController().navigate(R.id.action_bookingDetailsFragment_to_contactDetailsFragment)
         }
@@ -45,7 +56,13 @@ class BookingDetailsFragment : Fragment() {
         }
 
         binding.btnSelect.setOnClickListener {
-            findNavController().navigate(R.id.action_bookingDetailsFragment_to_selectSeatFragment)
+            val bundle = Bundle()
+            flight?.price = flight?.price?.plus(baggage ?: 0)
+            bundle.putSerializable("flight", flight)
+            findNavController().navigate(
+                R.id.action_bookingDetailsFragment_to_selectSeatFragment,
+                bundle
+            )
         }
 
 
@@ -62,6 +79,8 @@ class BookingDetailsFragment : Fragment() {
             val cardView3: CardView = view.findViewById(R.id.cardPBaggage3)
             val txtPrice: TextView = view.findViewById(R.id.txtPrice1)
             val txtPrice2: TextView = view.findViewById(R.id.txtPrice2)
+            val btnAdd: Button = view.findViewById(R.id.btnAdd)
+            val txtBaggage: TextView = view.findViewById(R.id.txtAddBaggage)
 
             val cardToTextMap = mapOf(
                 cardView1 to listOf(R.id.txtBaggageWeight, R.id.txtBaggagePrice),
@@ -90,16 +109,19 @@ class BookingDetailsFragment : Fragment() {
                             cardView1 -> {
                                 txtPrice.text = "$0"
                                 txtPrice2.text = "$0"
+                                baggage = 0
                             }
 
                             cardView2 -> {
                                 txtPrice.text = "$28"
                                 txtPrice2.text = "$28"
+                                baggage = 5
                             }
 
                             cardView3 -> {
                                 txtPrice.text = "$60"
                                 txtPrice2.text = "$60"
+                                baggage = 10
                             }
                         }
                     } else if (count == 1 && checked) {
@@ -119,6 +141,11 @@ class BookingDetailsFragment : Fragment() {
 
                     }
 
+                    btnAdd.setOnClickListener {
+                        txtBaggage.text =
+                            (baggage.toString() + "Kg") ?: getString(R.string.txtAddBaggage)
+                    }
+
 
                 }
 
@@ -132,9 +159,15 @@ class BookingDetailsFragment : Fragment() {
 
     }
 
-    private fun setLayoutValue(){
-        binding.txtContactName.text = mAuth.currentUser?.displayName?:"N/A"
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    private fun setLayoutValue() {
+        binding.txtContactName.text = mAuth.currentUser?.displayName ?: "N/A"
         binding.txtContactEmail.text = mAuth.currentUser?.email ?: "N/A"
         binding.txtContactNumber.text = mAuth.currentUser?.phoneNumber ?: "xxx xxx xx xx"
+        binding.txtPassengerName.text = mAuth.currentUser?.displayName ?: "Add passenger details"
+        arguments?.let {
+            flight = it.getSerializable("flight", Flight::class.java)
+            binding.txtSubtoal.text = flight?.price.toString()
+        }
     }
 }

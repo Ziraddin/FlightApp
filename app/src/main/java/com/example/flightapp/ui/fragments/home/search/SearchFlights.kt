@@ -45,7 +45,7 @@ class SearchFlights : Fragment() {
 
     private fun setAdapter() {
         adapter = FlightTicketAdapter(mutableListOf()) {
-            findNavController().navigate(R.id.action_searchFlights_to_bookingDetailsFragment)
+            findNavController().navigate(R.id.action_searchFlights_to_bookingDetailsFragment,it)
         }
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerView.adapter = adapter

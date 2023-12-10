@@ -1,6 +1,7 @@
 package com.example.flightapp.ui.adapters.recyclerview
 
 import android.os.Build
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
@@ -15,7 +16,7 @@ import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.util.Locale
 
-class FlightTicketAdapter(private var flight: MutableList<Flight>, val nav: () -> Unit) :
+class FlightTicketAdapter(private var flight: MutableList<Flight>, val nav: (Bundle) -> Unit) :
     RecyclerView.Adapter<FlightTicketAdapter.ViewHolder>() {
 
 
@@ -110,7 +111,9 @@ class FlightTicketAdapter(private var flight: MutableList<Flight>, val nav: () -
             binding.txtCompanyName.text = current.company
 
             itemView.setOnClickListener {
-                nav()
+                val bundle = Bundle()
+                bundle.putSerializable("flight",current)
+                nav(bundle)
             }
         }
     }
