@@ -163,15 +163,13 @@ class BookingDetailsFragment : Fragment() {
         }
 
     }
-
-    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     private fun setLayoutValue() {
         binding.txtContactName.text = mAuth.currentUser?.displayName ?: "N/A"
         binding.txtContactEmail.text = mAuth.currentUser?.email ?: "N/A"
         binding.txtContactNumber.text = activity?.getSharedPreferences("UserDetails", Context.MODE_PRIVATE)?.getString("phone","No number assigned")
         binding.txtPassengerName.text = mAuth.currentUser?.displayName ?: "Add passenger details"
         arguments?.let {
-            flight = it.getSerializable("flight", Flight::class.java)
+            flight = it.getSerializable("flight") as Flight?
             binding.txtSubtoal.text = flight?.price.toString()
         }
     }

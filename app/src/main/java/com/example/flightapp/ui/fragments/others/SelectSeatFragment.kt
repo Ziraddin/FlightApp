@@ -36,7 +36,7 @@ class SelectSeatFragment : Fragment() {
     private var seatNo: String? = null
     private lateinit var userVm: UserVm
     private lateinit var user: User
-
+    private var listSeat : MutableList<String>?= null
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
@@ -57,6 +57,12 @@ class SelectSeatFragment : Fragment() {
         }
         binding.btnSelectSeat.setOnClickListener {
             val flight = arguments?.getSerializable("flight") as? Flight
+
+            if (flight != null) {
+                flight.transactions?.forEach { transaction ->
+                    listSeat?.add(transaction.seatNumber!!)
+                }
+            }
             val currentDate = getCurrentDate()
             val baggage = BookingDetailsFragment.baggage.toString()
             userVm = ViewModelProvider(this)[UserVm::class.java]
@@ -124,8 +130,14 @@ class SelectSeatFragment : Fragment() {
             Seats(R.drawable.seat_available, "C4")
         )
 
-        adapter = SeatAdapters(listOfSeats)
-        adapterRight = SeatAdapters(listOfSeats)
+        val availableSeats: List<Seats> = listOfSeats.map { seat ->
+            val isNotAvailable = listSeat?.contains(seat.seatNumber) == true
+            seat.copy(notAvailable = isNotAvailable, isSelected = false)
+        }
+
+
+        adapter = SeatAdapters(availableSeats)
+        adapterRight = SeatAdapters(availableSeats)
         binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
         binding.recyclerView2.layoutManager = GridLayoutManager(requireContext(), 3)
         binding.recyclerView.adapter = adapter
