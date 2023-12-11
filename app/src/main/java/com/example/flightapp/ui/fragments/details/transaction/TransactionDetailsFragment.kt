@@ -12,6 +12,7 @@ import com.example.flightapp.R
 import com.example.flightapp.databinding.FragmentTransactionDetailsBinding
 import com.example.flightapp.model.Transaction
 import com.example.flightapp.ui.activities.MainActivity
+import com.example.flightapp.ui.fragments.details.booking.BookingDetailsFragment
 
 class TransactionDetailsFragment : Fragment() {
     private lateinit var binding: FragmentTransactionDetailsBinding
@@ -48,7 +49,8 @@ class TransactionDetailsFragment : Fragment() {
 
     private fun setLayoutValue() {
         val transaction = arguments?.getSerializable("transaction") as? Transaction
-
+        binding.txtPrice1.text = BookingDetailsFragment.priceTotal.toString()
+        binding.txtPrice2.text = BookingDetailsFragment.priceTotal.toString()
         transaction?.let {
             val user = it.user
             val flight = it.flight
@@ -69,6 +71,8 @@ class TransactionDetailsFragment : Fragment() {
             }
         }
     }
+
+
 
 
 }

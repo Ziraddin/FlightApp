@@ -12,6 +12,7 @@ import com.example.flightapp.R
 import com.example.flightapp.api.constants.Constants.cUser
 import com.example.flightapp.databinding.FragmentPaymentDetailsBinding
 import com.example.flightapp.model.User
+import com.example.flightapp.ui.fragments.details.booking.BookingDetailsFragment
 import com.example.flightapp.viewmodels.UserVm
 
 class PaymentDetailsFragment : Fragment() {
@@ -24,7 +25,7 @@ class PaymentDetailsFragment : Fragment() {
     ): View {
         binding = FragmentPaymentDetailsBinding.inflate(inflater)
         userVm = ViewModelProvider(this)[UserVm::class.java]
-
+        setLayoutValue()
         userVm.getUser(
             cUser.firstname!!, cUser.lastname!!, cUser.email!!
         )
@@ -70,5 +71,9 @@ class PaymentDetailsFragment : Fragment() {
         binding.btnProceed.setOnClickListener {
             findNavController().navigate(R.id.action_paymentDetailsFragment_to_paymentSuccessfulFragment)
         }
+    }
+
+    private fun setLayoutValue(){
+        binding.txtTotalPrice.text = BookingDetailsFragment.priceTotal.toString()
     }
 }

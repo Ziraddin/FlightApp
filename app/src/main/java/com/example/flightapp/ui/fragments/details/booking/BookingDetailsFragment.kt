@@ -27,6 +27,7 @@ class BookingDetailsFragment : Fragment() {
 
     companion object{
         var baggage: Int = 0
+        var priceTotal : Long = 0L
     }
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
@@ -59,6 +60,8 @@ class BookingDetailsFragment : Fragment() {
         binding.btnSelect.setOnClickListener {
             val bundle = Bundle()
             flight?.price = flight?.price?.plus(baggage)
+            priceTotal = (flight?.price ?: 0.0).toLong()
+
             bundle.putSerializable("flight", flight)
             findNavController().navigate(
                 R.id.action_bookingDetailsFragment_to_selectSeatFragment,
