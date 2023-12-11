@@ -11,14 +11,19 @@ import androidx.navigation.fragment.findNavController
 import com.example.flightapp.R
 import com.example.flightapp.api.constants.Constants.cUser
 import com.example.flightapp.databinding.FragmentPaymentDetailsBinding
+import com.example.flightapp.model.Transaction
 import com.example.flightapp.model.User
 import com.example.flightapp.ui.fragments.details.booking.BookingDetailsFragment
+import com.example.flightapp.viewmodels.TransactionVm
 import com.example.flightapp.viewmodels.UserVm
+import kotlinx.coroutines.delay
 
 class PaymentDetailsFragment : Fragment() {
     private lateinit var binding: FragmentPaymentDetailsBinding
     private lateinit var userVm: UserVm
     private lateinit var user: User
+    private lateinit var transaction: Transaction
+    lateinit var transactionVm: TransactionVm
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -26,6 +31,8 @@ class PaymentDetailsFragment : Fragment() {
         binding = FragmentPaymentDetailsBinding.inflate(inflater)
         userVm = ViewModelProvider(this)[UserVm::class.java]
         setLayoutValue()
+        transactionVm = ViewModelProvider(this)[TransactionVm::class.java]
+
         userVm.getUser(
             cUser.firstname!!, cUser.lastname!!, cUser.email!!
         )
@@ -59,7 +66,7 @@ class PaymentDetailsFragment : Fragment() {
         userVm.updateUser(user.id!!, user)
         userVm.userLiveData.observe(viewLifecycleOwner, Observer {
             user = it
-            binding.btnProceed.isEnabled = user.payment?.id != null
+            binding.btnProceed.isEnabled = true
         })
     }
 
@@ -69,6 +76,10 @@ class PaymentDetailsFragment : Fragment() {
         }
 
         binding.btnProceed.setOnClickListener {
+            arguments?.let {
+                transaction = it.getSerializable("transaction") as Transaction
+                transactionVm.createTransaction(transaction)
+            }
             findNavController().navigate(R.id.action_paymentDetailsFragment_to_paymentSuccessfulFragment)
         }
     }

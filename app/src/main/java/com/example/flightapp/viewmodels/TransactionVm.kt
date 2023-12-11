@@ -1,6 +1,7 @@
 package com.example.flightapp.viewmodels
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -9,9 +10,10 @@ import com.example.flightapp.model.Transaction
 import kotlinx.coroutines.launch
 import java.io.Serializable
 
-class TransactionVm : ViewModel(){
+class TransactionVm : ViewModel() {
 
     var transactionsLiveData = MutableLiveData<List<Transaction?>?>()
+    var transactionLiveDataNotList: MutableLiveData<Transaction> = MutableLiveData<Transaction>()
     private val transactionApi = RetrofitClient.transactionApi
 
     fun getTransactionsByUserId(userid: Int) {
@@ -28,6 +30,7 @@ class TransactionVm : ViewModel(){
         viewModelScope.launch {
             Log.d("TransactionVm", "Before Api Call")
             val response = transactionApi.createTransaction(transaction)
+            transactionLiveDataNotList.value = response
             Log.d("TransactionVm", "createTransaction: $response")
             Log.d("TransactionVm", "After Api Call")
         }

@@ -29,8 +29,11 @@ class UserVm : ViewModel() {
 
     fun updateUser(id: Int, user: User) {
         viewModelScope.launch {
+            Log.d("UserVm", "before api call")
             val response = userApiCall.updateUser(id, user)
             userLiveData.postValue(response)
+            Log.d("UserVm", "response $response")
+            Log.d("UserVm", "after api call")
         }
     }
 
