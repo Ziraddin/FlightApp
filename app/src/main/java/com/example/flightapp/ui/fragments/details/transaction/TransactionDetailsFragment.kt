@@ -2,6 +2,7 @@ package com.example.flightapp.ui.fragments.details.transaction
 
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -54,15 +55,15 @@ class TransactionDetailsFragment : Fragment() {
         transaction?.let {
             val user = it.user
             val flight = it.flight
-
+            Log.e("flight", flight.toString())
             with(binding) {
                 binding.txtWhereFrom.text = flight.departure?.slice(0..2)
                 binding.txtWhereTo.text = flight.arrival?.slice(0..2)
-                txtContactName.text = "${user.firstname} ${user.lastname}"
-                txtCompanyName.text = flight.company
-                txtUserName.text = "${user.firstname} ${user.lastname}"
-                txtPrice1.text = (flight.price ?: 0).toString()
-                txtPrice2.text = (flight.price ?: 0).toString()
+                txtContactName.text = user.firstname + " "  + user.lastname
+                txtCompanyName.text = flight.company.toString()
+                txtUserName.text = user.firstname + " "  + user.lastname
+                txtPrice1.text = "$" + (flight.price ?: 0).toString()
+                txtPrice2.text = "$" +(flight.price ?: 0).toString()
                 txtTakeOffTime.text = flight.departureTime?.slice(11..15)
                 txtLandTime.text = flight.arrivalTime?.slice(11..15)
                 txtTransactionDate.text = it.date
