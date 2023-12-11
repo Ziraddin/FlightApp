@@ -167,7 +167,7 @@ class BookingDetailsFragment : Fragment() {
         binding.txtContactNumber.text = mAuth.currentUser?.phoneNumber ?: "xxx xxx xx xx"
         binding.txtPassengerName.text = mAuth.currentUser?.displayName ?: "Add passenger details"
         arguments?.let {
-            flight = it.getSerializable("flight", Flight::class.java)
+            flight = it.getSerializable("flight") as Flight
             binding.txtSubtoal.text = flight?.price.toString()
         }
     }

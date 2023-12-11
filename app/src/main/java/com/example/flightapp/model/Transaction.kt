@@ -3,7 +3,7 @@ package com.example.flightapp.model
 import java.io.Serializable
 
 data class Transaction(
-    val id: Int,
+    var id: Int? = null,
     var date: String? = null,
     var baggage: String? = null,
     var seatNumber: String? = null,

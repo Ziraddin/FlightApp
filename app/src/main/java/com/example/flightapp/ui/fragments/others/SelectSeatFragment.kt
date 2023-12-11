@@ -11,7 +11,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.flightapp.R
 import com.example.flightapp.api.constants.Constants
@@ -42,7 +41,7 @@ class SelectSeatFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentSelectSeatBinding.inflate(inflater)
         setNavigation()
         setAdapter()
@@ -67,25 +66,26 @@ class SelectSeatFragment : Fragment() {
             )
             userVm.userLiveData.observe(viewLifecycleOwner, Observer {
                 user = it
-            })
-            val transaction = Transaction(
-                0,
-                date = currentDate,
-                baggage = baggage,
-                seatNumber = seatNo,
-                flight = flight!!,
-                user = user
-            )
-            val bundle = Bundle()
-            bundle.putSerializable("transaction", transaction)
-            if(seatNo!=null){
-                findNavController().navigate(
-                    R.id.action_selectSeatFragment_to_paymentDetailsFragment,
-                    bundle
+                val transaction = Transaction(
+                    date = currentDate,
+                    baggage = baggage,
+                    seatNumber = seatNo,
+                    flight = flight!!,
+                    user = user
                 )
-            }else{
-                Snackbar.make(requireView(),"Please select a seat" , Snackbar.LENGTH_SHORT).show()
-            }
+
+                val bundle = Bundle()
+                bundle.putSerializable("transaction", transaction)
+                if(seatNo!=null){
+                    findNavController().navigate(
+                        R.id.action_selectSeatFragment_to_paymentDetailsFragment,
+                        bundle
+                    )
+                }else{
+                    Snackbar.make(requireView(),"Please select a seat" , Snackbar.LENGTH_SHORT).show()
+                }
+            })
+
         }
     }
 
