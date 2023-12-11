@@ -135,7 +135,6 @@ class SelectSeatFragment : Fragment() {
             seat.copy(notAvailable = isNotAvailable, isSelected = false)
         }
 
-
         adapter = SeatAdapters(availableSeats)
         adapterRight = SeatAdapters(availableSeats)
         binding.recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
