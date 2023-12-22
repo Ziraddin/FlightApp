@@ -159,7 +159,6 @@ class SignUpFragment : Fragment() {
                 Toast.makeText(
                     requireContext(), "Signed in as ${user?.displayName}", Toast.LENGTH_SHORT
                 ).show()
-
                 userVm.addUser(
                     User(
                         firstname = user!!.displayName!!.split(" ")[0],
