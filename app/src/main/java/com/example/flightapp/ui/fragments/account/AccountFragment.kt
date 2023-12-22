@@ -1,5 +1,6 @@
 package com.example.flightapp.ui.fragments.account
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -33,7 +34,7 @@ class AccountFragment : Fragment() {
     private fun setUserInfo() {
         binding.txtName.text = mAuth.currentUser?.displayName ?: "no username"
         binding.txtEmail.text = mAuth.currentUser?.email ?: "no email address"
-        binding.txtNumber.text = mAuth.currentUser?.phoneNumber ?: "xxx xxx xx xx"
+        binding.txtNumber.text = activity?.getSharedPreferences("UserDetails", Context.MODE_PRIVATE)?.getString("phone","No number assigned")
     }
 
 

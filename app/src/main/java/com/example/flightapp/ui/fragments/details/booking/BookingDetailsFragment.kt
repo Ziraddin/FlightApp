@@ -1,5 +1,6 @@
 package com.example.flightapp.ui.fragments.details.booking
 
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -26,6 +27,7 @@ class BookingDetailsFragment : Fragment() {
 
     companion object{
         var baggage: Int = 0
+        var priceTotal : Long = 0L
     }
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
@@ -58,6 +60,8 @@ class BookingDetailsFragment : Fragment() {
         binding.btnSelect.setOnClickListener {
             val bundle = Bundle()
             flight?.price = flight?.price?.plus(baggage)
+            priceTotal = (flight?.price ?: 0.0).toLong()
+
             bundle.putSerializable("flight", flight)
             findNavController().navigate(
                 R.id.action_bookingDetailsFragment_to_selectSeatFragment,
@@ -164,7 +168,7 @@ class BookingDetailsFragment : Fragment() {
     private fun setLayoutValue() {
         binding.txtContactName.text = mAuth.currentUser?.displayName ?: "N/A"
         binding.txtContactEmail.text = mAuth.currentUser?.email ?: "N/A"
-        binding.txtContactNumber.text = mAuth.currentUser?.phoneNumber ?: "xxx xxx xx xx"
+        binding.txtContactNumber.text = activity?.getSharedPreferences("UserDetails", Context.MODE_PRIVATE)?.getString("phone","No number assigned")
         binding.txtPassengerName.text = mAuth.currentUser?.displayName ?: "Add passenger details"
         arguments?.let {
             flight = it.getSerializable("flight") as Flight

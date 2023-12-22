@@ -13,6 +13,7 @@ import com.example.flightapp.api.constants.Constants.cUser
 import com.example.flightapp.databinding.FragmentPaymentDetailsBinding
 import com.example.flightapp.model.Transaction
 import com.example.flightapp.model.User
+import com.example.flightapp.ui.fragments.details.booking.BookingDetailsFragment
 import com.example.flightapp.viewmodels.TransactionVm
 import com.example.flightapp.viewmodels.UserVm
 import kotlinx.coroutines.delay
@@ -29,6 +30,7 @@ class PaymentDetailsFragment : Fragment() {
     ): View {
         binding = FragmentPaymentDetailsBinding.inflate(inflater)
         userVm = ViewModelProvider(this)[UserVm::class.java]
+        setLayoutValue()
         transactionVm = ViewModelProvider(this)[TransactionVm::class.java]
 
         userVm.getUser(
@@ -80,5 +82,9 @@ class PaymentDetailsFragment : Fragment() {
             }
             findNavController().navigate(R.id.action_paymentDetailsFragment_to_paymentSuccessfulFragment)
         }
+    }
+
+    private fun setLayoutValue(){
+        binding.txtTotalPrice.text = BookingDetailsFragment.priceTotal.toString()
     }
 }

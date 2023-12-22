@@ -1,5 +1,6 @@
 package com.example.flightapp.ui.fragments.details.contact
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -32,6 +33,6 @@ class ContactDetailsFragment : Fragment() {
     private fun setLayoutValue(){
         binding.txtUsername.text = mAuth.currentUser?.displayName?:"N/A"
         binding.txtEmailAddress.text = mAuth.currentUser?.email ?: "N/A"
-        binding.txtPhoneNumber.text = mAuth.currentUser?.phoneNumber ?: "xxx xxx xx xx"
+        binding.txtPhoneNumber.text = activity?.getSharedPreferences("UserDetails", Context.MODE_PRIVATE)?.getString("phone","No number assigned")
     }
 }
